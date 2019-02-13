@@ -27,18 +27,19 @@
 </table>
 
 
-<?php
+<!-- <?php
 // ランダムワード生成
 require_once('function.php');
 ?>
-
+ -->
 
 <script src='main.js'></script>
 <script>
 // ローカルストレージに保存
 uuid = getUniqueStr(); // ユニークなIDを取得　
 var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
-var _name = '<?php echo makeWord(); ?>'; // ワードを生成してセット
+// var _name = '<?php echo makeWord(); ?>'; // ワードを生成してセット
+var _name = 'New単語'; // ワードを生成してセット
 var _star = 0; // 始めはスターなし
 saveStorage(Key,_name,_star); 
 </script>
