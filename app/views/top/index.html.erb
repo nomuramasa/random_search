@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>ランダムメモ</title>
+  <link href='style.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<h2>検索棚</h2>
+<table border=1>
+
+	<tr>
+		<th colspan=3>
+		<!-- <form action='' method='get'> -->
+			<!-- <input type='submit' name='make' value='ワードを追加 ＋' class='btn'> -->
+		<!-- </form> -->
+			<a href='./'>新しいワードを追加 ＋</a>
+			<!-- <a onclick='make()'>新しいワードを追加</a> -->
+		</th>
+	</tr>
+
+  <tbody id='tb'>
+  </tbody>
+
+</table>
+
+
+<?php
+// ランダムワード生成
+require_once('function.php');
+?>
+
+
+<script src='main.js'></script>
+<script>
+// ローカルストレージに保存
+uuid = getUniqueStr(); // ユニークなIDを取得　
+var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
+var _name = '<?php echo makeWord(); ?>'; // ワードを生成してセット
+var _star = 0; // 始めはスターなし
+saveStorage(Key,_name,_star); 
+</script>
+
+</body>
+</html>
