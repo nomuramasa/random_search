@@ -9,6 +9,7 @@ var saveStorage = function(Key,name,star,visit){
   viewStorage();
 }
 
+
 // ストレージの値を更新
 var changeStorage = function(id, purpose){
   var getjson = localStorage.getItem(id); // 受け取ったidの行を選択
@@ -28,6 +29,7 @@ var changeStorage = function(id, purpose){
   }
   saveStorage(_id, _name, _star, _visit); //あとは追加の時と同じ
 }
+
 
 // 特定のワードを削除
 var removeStorage = function(id){
@@ -71,11 +73,20 @@ var viewStorage = function(){
         var tr = document.createElement('tr'); // 行 
         // tr.classList.add('justify-content-between'); //テーブルの列を両端から均等に並べる
         // tr.classList.add('table-info'); // 行に背景色指定
-        var td1 = document.createElement('td'); // スター
+
+        var td1 = document.createElement('td'); // 訪問チェック
+        td1.classList.add('col-0'); // 列幅調整
+
         var td2 = document.createElement('td'); // 検索ワード
-        // td2.classList.add('word'); //ワードの色を変える??
-        var td3 = document.createElement('td'); // 訪問チェック
+        td2.classList.add('col-8'); // 列幅調整
+        // td2.classList.add('text-center'); // 真ん中揃え？？
+        // td2.classList.add('word'); // ワードの色を変える？？
+
+        var td3 = document.createElement('td'); // スター
+        td3.classList.add('col-1'); // 列幅調整
+
         var td4 = document.createElement('td'); // ごみ箱
+        td4.classList.add('col-1'); // 列幅調整
 
         tb.appendChild(tr);
         tr.appendChild(td1);
@@ -88,14 +99,14 @@ var viewStorage = function(){
         td1.innerHTML = '<div class="text-danger">' + deco; + '</div>'
 
         // 検索ワード
-        td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="https://www.google.com/search?q='+ name + '" target="_blank" class="btn">' + name + '</a>'; 
+        td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="https://www.google.com/search?q='+ name + '" target="_blank" class="d-block">' + name + '</a>'; 
 
         // スター  
         if(star == 0){var color='nostar'} else {var color='star'}
-        td3.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'star\')" class="btn '+ color +'"><i class="material-icons">star</i></a>';
+        td3.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'star\')" class=" '+ color +'"><i class="material-icons">star</i></a>';
 
         // ごみ箱
-        td4.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="btn trash"><i class="material-icons">delete</i></a>';
+        td4.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="trash"><i class="material-icons">delete</i></a>';
     }
     
     // if(localStorage.length > 5){ // ストレージのデータが10個を超えたら
