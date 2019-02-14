@@ -83,16 +83,16 @@ var viewStorage = function(){
         tr.appendChild(td3);
         tr.appendChild(td4);
 
-        // スター  
-        if(star == 0){var color='nostar'} else {var color='star'}
-        td1.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'star\')" class="btn '+ color +'"><i class="material-icons">star</i></a>';
+        // New
+        if(visit == 0){var deco='New！'} else {var deco=''}
+        td1.innerHTML = '<div class="text-danger">' + deco; + '</div>'
 
         // 検索ワード
         td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="https://www.google.com/search?q='+ name + '" target="_blank" class="btn">' + name + '</a>'; 
 
-        // New
-        if(visit == 0){var deco='New！'} else {var deco=''}
-        td3.innerHTML = '<div class="text-danger">' + deco; + '</div>'
+        // スター  
+        if(star == 0){var color='nostar'} else {var color='star'}
+        td3.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'star\')" class="btn '+ color +'"><i class="material-icons">star</i></a>';
 
         // ごみ箱
         td4.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="btn trash"><i class="material-icons">delete</i></a>';
