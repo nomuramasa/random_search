@@ -1,12 +1,3 @@
-//= require rails-ujs
-//= require activestorage
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
-//= require turbolinks
-//= require_tree .
-
-
 // ストレージに追加
 var saveStorage = function(Key,name,star){
   var Value = {name: name, star: star}; // オブジェクトを作る
@@ -99,3 +90,12 @@ var viewStorage = function(){
         // clearStorage();
     // }; 
 // };
+
+
+//= require rails-ujs
+//= require activestorage
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require_tree .
