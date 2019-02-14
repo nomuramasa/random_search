@@ -1,6 +1,6 @@
 // ストレージに追加
-var saveStorage = function(Key,name,star){
-  var Value = {name: name, star: star}; // オブジェクトを作る
+var saveStorage = function(Key,name,star,visit){
+  var Value = {name: name, star: star, visit: visit}; // オブジェクトを作る
   var setjson = JSON.stringify(Value); //JSON形式にエンコード
   if (Key && Value.name && Value) {
     localStorage.setItem(Key, setjson); //ストレージへ追加
@@ -16,7 +16,19 @@ var changeStar = function(id){
   if(obj.star == 0){var _star = 1} else{var _star = 0}  // スター変更
   var _id = id; // idそのまま
   var _name = obj.name; // 単語名そのまま
-  saveStorage(_id,_name,_star); //あとは追加の時と同じ
+  var _visit = obj.visit; // 訪問チェックそのまま
+  saveStorage(_id, _name, _star, _visit); //あとは追加の時と同じ
+}
+
+// 訪問済みのフラグを立てる（単語がクリックされた時）
+var visit = function(id){
+  var getjson = localStorage.getItem(id); // 受け取ったidの行を選択
+  var obj = JSON.parse(getjson); // JSONをオブジェクトに
+  var _id = id; // idそのまま
+  var _name = obj.name; // 単語名そのまま
+  var _star = obj.star; // スターそのまま
+  var _visit = 1 // 訪問済みにする
+  saveStorage(_id, _name, _star, _visit); //あとは追加の時と同じ
 }
 
 // 特定のワードを削除
@@ -56,27 +68,38 @@ var viewStorage = function(){
         var obj = JSON.parse(getjson); // JSON → オブジェクト
         var name = obj.name;
         var star = obj.star;
+        var visit = obj.visit;
 
         var tr = document.createElement('tr'); // 行 
         // tr.classList.add('justify-content-between'); //テーブルの列を両端から均等に並べる
         // tr.classList.add('table-info'); // 行に背景色指定
         var td1 = document.createElement('td'); // スター
         var td2 = document.createElement('td'); // 検索ワード
-        td2.classList.add('word'); //訪問済みかでワードの色を変える
-        var td3 = document.createElement('td'); // ごみ箱
+        // td2.classList.add('word'); //ワードの色を変える??
+        var td3 = document.createElement('td'); // 訪問チェック
+        var td4 = document.createElement('td'); // ごみ箱
 
         tb.appendChild(tr);
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
+        tr.appendChild(td4);
+
         // スター  
         if(star == 0){var color='nostar'} else {var color='star'}
-        td1.innerHTML = '<a onclick="changeStar(\'' + id + '\')" class="btn '+ color +'"><i class="material-icons">star</i></a>';
+        td1.innerHTML = '<a onclick="changeStar(\'' + id + '\',\'starclick\')" class="btn '+ color +'"><i class="material-icons">star</i></a>';
+
         // 検索ワード
-        td2.innerHTML = '<a href="https://www.google.com/search?q='+ name + '" target="_blank" class="btn">' + name + '</a>'; 
+        td2.innerHTML = '<a onclick="visit(\'' + id + '\')" href="https://www.google.com/search?q='+ name + '" target="_blank" class="btn">' + name + '</a>'; 
+
+        // New
+        if(visit == 0){var deco='New！'} else {var deco=''}
+        td3.innerHTML = '<div class="text-danger">' + deco; + '</div>'
+
         // ごみ箱
-        td3.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="btn trash"><i class="material-icons">delete</i></a>';
+        td4.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="btn trash"><i class="material-icons">delete</i></a>';
     }
+    
     // if(localStorage.length > 5){ // ストレージのデータが10個を超えたら
       // tr_long = document.createElement('tr').setAttribute("colspan", "3"); //エラー
       // tb.appendChild(tr_long); td_long = document.createElement('td'); tr_long.appendChild(td_long);

@@ -34,7 +34,8 @@ var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合�
 // var _name = '<?php echo makeWord(); ?>'; // ワードを生成してセット
 var _name = '<%= @word_ja %>'; // ワードを生成してセット
 var _star = 0; // 始めはスターなし
-saveStorage(Key,_name,_star); 
+var _visit = 0; // 始めは訪れてない
+saveStorage(Key,_name,_star,_visit); 
 </script>
 
 </body>
