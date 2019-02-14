@@ -9,25 +9,23 @@ var saveStorage = function(Key,name,star,visit){
   viewStorage();
 }
 
-// スターの値を変える
-var changeStar = function(id){
+// ストレージの値を更新
+var changeStorage = function(id, purpose){
   var getjson = localStorage.getItem(id); // 受け取ったidの行を選択
   var obj = JSON.parse(getjson); // JSONをオブジェクトに（中身を見る為）
-  if(obj.star == 0){var _star = 1} else{var _star = 0}  // スター変更
-  var _id = id; // idそのまま
-  var _name = obj.name; // 単語名そのまま
-  var _visit = obj.visit; // 訪問チェックそのまま
-  saveStorage(_id, _name, _star, _visit); //あとは追加の時と同じ
-}
+  var _id = id; // id
+  var _name = obj.name; // 単語名
+  var _star = obj.star; // スター
+  var _visit = obj.visit; // 訪問
 
-// 訪問済みのフラグを立てる（単語がクリックされた時）
-var visit = function(id){
-  var getjson = localStorage.getItem(id); // 受け取ったidの行を選択
-  var obj = JSON.parse(getjson); // JSONをオブジェクトに
-  var _id = id; // idそのまま
-  var _name = obj.name; // 単語名そのまま
-  var _star = obj.star; // スターそのまま
-  var _visit = 1 // 訪問済みにする
+  if(purpose == 'star'){ // スター目的の場合
+    if(obj.star == 0){_star = 1} else{_star = 0}  // スター変更
+    console.log('S')
+  }
+  if(purpose == 'visit'){ // 訪問チェック目的の場合
+    _visit = 1
+    console.log('V')
+  }
   saveStorage(_id, _name, _star, _visit); //あとは追加の時と同じ
 }
 
@@ -87,10 +85,10 @@ var viewStorage = function(){
 
         // スター  
         if(star == 0){var color='nostar'} else {var color='star'}
-        td1.innerHTML = '<a onclick="changeStar(\'' + id + '\',\'starclick\')" class="btn '+ color +'"><i class="material-icons">star</i></a>';
+        td1.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'star\')" class="btn '+ color +'"><i class="material-icons">star</i></a>';
 
         // 検索ワード
-        td2.innerHTML = '<a onclick="visit(\'' + id + '\')" href="https://www.google.com/search?q='+ name + '" target="_blank" class="btn">' + name + '</a>'; 
+        td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="https://www.google.com/search?q='+ name + '" target="_blank" class="btn">' + name + '</a>'; 
 
         // New
         if(visit == 0){var deco='New！'} else {var deco=''}
