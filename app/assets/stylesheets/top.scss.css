@@ -8,11 +8,7 @@ html, body, span, h1, h2, h3, h4, p, a,i, ul, li, table, tbody , thead, tr, th, 
 body{background-color: #ddd;}
 
 /*ボタン*/
-h2{height:50px;}
 .btn{font-size:20px;}
-
-/*テーブル*/
-table{border-collapse: collapse;}
 
 /*リンク*/
 a{

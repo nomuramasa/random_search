@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RandomSearch</title>
+    <title>新しい検索ワードと出会えるページ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width"> <!-- スマホの為のビューポート -->
@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <nav class='navbar navbar-expand-sm bg-dark text-white mb-3'>
+      <div class='container'>
+        <h2>検索棚</h2>
+      </div>
+    </nav>
     <div class='container'>
       <%= yield %>
     </div>

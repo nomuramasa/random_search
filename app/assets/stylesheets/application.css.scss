@@ -1,1 +1,21 @@
 @import 'bootstrap';
+
+// 星の色
+.star{color: #ffcc00 !important}
+.star:hover{color: #ffbf00 !important}
+
+.nostar{color: rgba(235,235,235,1) !important}
+.nostar:hover{color: rgba(200,200,200,1) !important}
+
+// ごみ箱の色　
+.trash{color:rgba(180,180,180,1) !important}
+.trash:hover{color:rgba(100,100,100,1) !important}
+
+
+// 新しい検索ワード
+.word a:link{
+	//background-color: #f00
+} 
+.word a:visited {
+	//background-color: #999
+}

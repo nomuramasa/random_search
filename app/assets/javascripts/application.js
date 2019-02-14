@@ -57,21 +57,25 @@ var viewStorage = function(){
         var name = obj.name;
         var star = obj.star;
 
-        var tr = document.createElement('tr');
-        var td1 = document.createElement('td');
-        var td2 = document.createElement('td');
-        var td3 = document.createElement('td');
+        var tr = document.createElement('tr'); // 行 
+        // tr.classList.add('justify-content-between'); //テーブルの列を両端から均等に並べる
+        // tr.classList.add('table-info'); // 行に背景色指定
+        var td1 = document.createElement('td'); // スター
+        var td2 = document.createElement('td'); // 検索ワード
+        td2.classList.add('word'); //訪問済みかでワードの色を変える
+        var td3 = document.createElement('td'); // ごみ箱
+
         tb.appendChild(tr);
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         // スター  
-        if(star == 0){var color='light'} else {var color='yellow'}
-        td1.innerHTML = '<a onclick="changeStar(\'' + id + '\')" class="point '+ color +'"><i class="material-icons">star</i></a>';
+        if(star == 0){var color='nostar'} else {var color='star'}
+        td1.innerHTML = '<a onclick="changeStar(\'' + id + '\')" class="btn '+ color +'"><i class="material-icons">star</i></a>';
         // 検索ワード
-        td2.innerHTML = '<a href="https://www.google.com/search?q='+ name + '" target="_blank">' + name + '</a>'; 
+        td2.innerHTML = '<a href="https://www.google.com/search?q='+ name + '" target="_blank" class="btn">' + name + '</a>'; 
         // ごみ箱
-        td3.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="point trash"><i class="material-icons">delete</i></a>';
+        td3.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="btn trash"><i class="material-icons">delete</i></a>';
     }
     // if(localStorage.length > 5){ // ストレージのデータが10個を超えたら
       // tr_long = document.createElement('tr').setAttribute("colspan", "3"); //エラー
