@@ -30,7 +30,7 @@
 uuid = getUniqueStr(); // ユニークなIDを取得　
 var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
 // var _name = '<?php echo makeWord(); ?>'; // ワードを生成してセット
-var _name = '<%= @response["location"] %>'; // ワードを生成してセット
+var _name = '<%= @word_ja %>'; // ワードを生成してセット
 var _star = 0; // 始めはスターなし
 saveStorage(Key,_name,_star); 
 </script>
