@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use rails console
 gem 'rb-readline'
+
+# スクレイピング
+gem 'mechanize'
