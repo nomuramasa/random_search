@@ -79,8 +79,8 @@ var viewStorage = function(){
 
         var td2 = document.createElement('td'); // 検索ワード
         td2.classList.add('col-8'); // 列幅調整
+        td2.classList.add('word'); // 単語には特徴のあるCSSを付けたい
         // td2.classList.add('text-center'); // 真ん中揃え？？
-        // td2.classList.add('word'); // ワードの色を変える？？
 
         var td3 = document.createElement('td'); // スター
         td3.classList.add('col-1'); // 列幅調整
