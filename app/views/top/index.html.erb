@@ -34,12 +34,12 @@ end
 			<tr class='row'>
 				<!-- New -->
 				<% if word.visit==0 then deco='NEW' else deco='' end %> <!-- 訪問チェック -->
-				<td class='col-sm-2 col-lg-1'>
+				<td class='col-2 col-lg-1'>
           <div class='text-danger new'><%= deco %></div>
 				</td>
 
 				<!-- 検索ワード -->
-				<td class='col-sm-8 col-lg-9 word'>
+				<td class='col-8 col-lg-9 word'>
           <a href='<%= "/#{word.id}/visit" %>' onclick='window.open("https://www.google.com/search?q=<%= "#{word.content}" %>")' class='d-block'> <!-- visitアクション起こすと同時に、jsでGoogleブラウザ開く -->
 	        	<%= word.content %>
         	</a>
@@ -47,12 +47,12 @@ end
 
 			  <!-- スター -->  
 				<% if word.star==0 then color='nostar' else color='star' end %> <!-- 色の為のクラス -->
-				<td class='col-sm-1 col-lg-1'>
+				<td class='col-1 col-lg-1'>
           <a href='<%= "/#{word.id}/update" %>' class='<%= color %>'><i class='material-icons'>star</i></a>
 				</td>
 
 			  <!-- ごみ箱 -->  
-				<td class='col-sm-1 col-lg-1'>
+				<td class='col-1 col-lg-1'>
           <a href='<%= "/#{word.id}/delete" %>'><i class='material-icons trash'>delete</i></a>
 				</td>
 
