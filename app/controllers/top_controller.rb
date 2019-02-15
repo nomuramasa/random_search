@@ -24,7 +24,7 @@ class TopController < ApplicationController
 	  # データベースに保存
 	  @word = Word.new(content:@word_ja, star:0, visit:0)
 	  @word.save
-	  redirect_to('/') # 終わったら一覧へ返す
+	  redirect_to('/') # トップページへ
   end
 
   #### 検索ワードをクリック
@@ -33,9 +33,7 @@ class TopController < ApplicationController
 		@word = Word.find_by(id:params[:id])
 		@word.visit = 1
 		@word.save  
-		# 検索ワードに飛ぶ
-	  # redirect_to('https://www.google.com/search?q='+@word.content) 
-	  redirect_to('/') # 終わったら一覧へ返す
+	  redirect_to('/') # トップページへ
 	end
 
   #### スター更新
@@ -43,7 +41,7 @@ class TopController < ApplicationController
     @word = Word.find_by(id:params[:id])
     if @word.star==0 then @word.star=1 else @word.star=0 end 
     @word.save
-	  redirect_to('/') # 終わったら一覧へ返す
+	  redirect_to('/') # トップページへ
   end
 
 
@@ -51,7 +49,7 @@ class TopController < ApplicationController
   def delete
     @word = Word.find_by(id:params[:id])
     @word.destroy
-	  redirect_to('/') # 終わったら一覧へ返す
+	  redirect_to('/') # トップページへ
   end
 
 end

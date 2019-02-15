@@ -30,8 +30,7 @@ end
 <table class='table table-sm'>
   <tbody id='tb'>
 	<% if 1 == 1 %>  <!-- ログイン中の場合 -->
-		<!-- データベースから降順に取り出す  -->
-		<% for word in @words.reverse %>
+		<% for word in @words.reverse %> <!-- DBから降順に取り出す  -->
 			<tr>
 				<!-- New -->
 				<% if word.visit==0 then deco='NEW' else deco='' end %> <!-- 訪問チェック -->
@@ -41,7 +40,9 @@ end
 
 				<!-- 検索ワード -->
 				<td class='col8'>
-          <a href='<%= "/#{word.id}/visit" %>', 'https://www.google.com/search?q=<%= "#{word.content}" %>' class='d-block'><%= word.content %></a>
+          <a href='<%= "/#{word.id}/visit" %>' onclick='window.open("https://www.google.com/search?q=<%= "#{word.content}" %>")' class='d-block'> <!-- visitアクション起こすと同時に、jsでGoogleブラウザ開く -->
+	        	<%= word.content %>
+        	</a>
 				</td>
 
 			  <!-- スター -->  
@@ -60,6 +61,5 @@ end
 	<% end %> <!-- ログアウト中は、id='tb'から勝手に生成してくれる -->
   </tbody>
 </table>
-
 </body>
 </html>
