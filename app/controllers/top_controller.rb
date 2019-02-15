@@ -28,9 +28,19 @@ class TopController < ApplicationController
   end
 
 
-  #### 更新
-  def update
+  #### スター更新
+  def updateStar
     @word = Word.find_by(id:params[:id])
+    if @word.star==0 then @word.star=1 else @word.star=0 end 
+    @word.save
+	  redirect_to('/') # 終わったら一覧へ返す
+  end
+
+  #### 訪問フラグ更新
+  def updateVisit
+    @word = Word.find_by(id:params[:id])
+    @word.visit = 1
+    @word.save
 	  redirect_to('/') # 終わったら一覧へ返す
   end
 

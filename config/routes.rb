@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   # 新しく追加
   get '/add' => 'top#add'
 
-  # 更新
-  get '/:id/update' => 'top#update'
+  # スター更新
+  get '/:id/updateStar' => 'top#updateStar'
+
+  # 訪問した
+  get '/:id/updateVisit' => 'top#updateVisit'
 
   # 削除
   get '/:id/delete' => 'top#delete'
