@@ -2,7 +2,7 @@ class TopController < ApplicationController
 
 	#### 検索ワード一覧ページ表示
   def index
-  	@words = Word.all
+		@words = Word.all
   end
 
   #### 新ワード追加アクション
@@ -27,19 +27,21 @@ class TopController < ApplicationController
 	  redirect_to('/') # 終わったら一覧へ返す
   end
 
+  #### 検索ワードをクリック
+  def visit
+		# 訪問したというフラグを立てる
+		@word = Word.find_by(id:params[:id])
+		@word.visit = 1
+		@word.save  
+		# 検索ワードに飛ぶ
+	  # redirect_to('https://www.google.com/search?q='+@word.content) 
+	  redirect_to('/') # 終わったら一覧へ返す
+	end
 
   #### スター更新
-  def updateStar
+  def update
     @word = Word.find_by(id:params[:id])
     if @word.star==0 then @word.star=1 else @word.star=0 end 
-    @word.save
-	  redirect_to('/') # 終わったら一覧へ返す
-  end
-
-  #### 訪問フラグ更新
-  def updateVisit
-    @word = Word.find_by(id:params[:id])
-    @word.visit = 1
     @word.save
 	  redirect_to('/') # 終わったら一覧へ返す
   end

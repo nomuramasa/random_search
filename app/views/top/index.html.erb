@@ -41,13 +41,13 @@ end
 
 				<!-- 検索ワード -->
 				<td class='col8'>
-          <a href='https://www.google.com/search?q="'<%= word.content %> target='_blank' class='d-block'><%= word.content %></a>
+          <a href='<%= "/#{word.id}/visit" %>', 'https://www.google.com/search?q=<%= "#{word.content}" %>' class='d-block'><%= word.content %></a>
 				</td>
 
 			  <!-- スター -->  
 				<% if word.star==0 then color='nostar' else color='star' end %> <!-- 色の為のクラス -->
 				<td class='col1'>
-          <a href='<%= "/#{word.id}/updateStar" %>' class='<%= color %>'><i class='material-icons'>star</i></a>
+          <a href='<%= "/#{word.id}/update" %>' class='<%= color %>'><i class='material-icons'>star</i></a>
 				</td>
 
 			  <!-- ごみ箱 -->  
