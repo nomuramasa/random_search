@@ -1,10 +1,11 @@
 class TopController < ApplicationController
 
-	#### 検索ワード一覧ページ 
+	#### 検索ワード一覧ページ表示
   def index
+  	@words = Word.all
   end
 
-  #### 新規にワード追加
+  #### 新ワード追加アクション
   def add
 
 		# ランダムワードを生成（本来はcsvファイルなどから取得） 
@@ -21,14 +22,23 @@ class TopController < ApplicationController
 	  end
 
 	  # データベースに保存
-
-
+	  @word = Word.new(content:@word_ja, star:0, visit:0)
+	  @word.save
 	  redirect_to('/') # 終わったら一覧へ返す
   end
 
-  #### 削除
-  # def delete
 
-  # end
+  #### 更新
+  def update
+  	
+	  redirect_to('/') # 終わったら一覧へ返す
+  end
+
+
+  #### 削除
+  def delete
+
+	  redirect_to('/') # 終わったら一覧へ返す
+  end
 
 end
