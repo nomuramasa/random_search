@@ -30,7 +30,7 @@ class TopController < ApplicationController
 
   #### 更新
   def update
-  	
+    @word = Word.find_by(id:params[:id])
 	  redirect_to('/') # 終わったら一覧へ返す
   end
 
