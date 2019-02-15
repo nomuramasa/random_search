@@ -2,7 +2,7 @@ class TopController < ApplicationController
 
 	#### 検索ワード一覧ページ表示
   def index
-		@words = Word.all
+		@words = Word.all.order(id: :desc)
   end
 
   #### 新ワード追加アクション
