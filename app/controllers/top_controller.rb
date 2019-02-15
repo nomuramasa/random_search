@@ -37,7 +37,8 @@ class TopController < ApplicationController
 
   #### 削除
   def delete
-
+    @word = Word.find_by(id:params[:id])
+    @word.destroy
 	  redirect_to('/') # 終わったら一覧へ返す
   end
 
