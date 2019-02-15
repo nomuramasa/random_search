@@ -61,22 +61,5 @@ end
   </tbody>
 </table>
 
-
-<!-- ログインしてない場合は、ローカルストレージのデータと連携 -->
-<script>
-if(1 == 0){ 
-	////// この処理は、「新規」ボタンが押されたときのみ。そして本来jsファイルの方に書く
-	// var getWord = function(){  
-		// ローカルストレージに保存
-		uuid = getUniqueStr(); // ユニークなIDを取得　
-		var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
-		var _name = '<%= @word_ja %>'; // ワードを生成してセット
-		var _star = 0; // 始めはスターなし
-		var _visit = 0; // 始めは訪れてない
-		saveStorage(Key,_name,_star,_visit); 
-	// }
-}
-</script>
-
 </body>
 </html>

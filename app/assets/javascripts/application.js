@@ -1,6 +1,15 @@
 if(1 == 0){ // ログアウト中のみ
 
-  //// 本来ここに、var getWord = function(){} の関数が記述される
+  var getWord = function(){  
+    // ローカルストレージに保存
+    uuid = getUniqueStr(); // ユニークなIDを取得　
+    var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
+    var _name = '<%= @word_ja %>'; // ワードを生成してセット
+    var _star = 0; // 始めはスターなし
+    var _visit = 0; // 始めは訪れてない
+    saveStorage(Key,_name,_star,_visit); 
+  }
+
 
   // ストレージに追加
   var saveStorage = function(Key,name,star,visit){
