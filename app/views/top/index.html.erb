@@ -8,16 +8,16 @@
 <body>
 
 
+<!-- 新ワード追加ボタン -->
 <%
 if 1 == 1   # ログイン中の場合
 	link = '/add' # サーバーで処理
-else 1 == 0 # ログアウト中の場合
+else # ログアウト中の場合
 	link = './' 
 	action = 'getWord()' # csvデータ取得して、ローカルストレージに追加
 end 
 %>
 
-<!-- 新しいワード追加ボタン -->
 <div class='text-center mb-4'>
 			<a href='<%= link %>' class='btn btn-primary text-center' onclick='<%= action %>'>新しいワードを追加 ＋</a>
 			<!-- <form action='' method='get'> -->
@@ -25,14 +25,45 @@ end
 </div>
 
 
+
+<!-- テーブルを表示 -->
 <table class='table table-sm'>
   <tbody id='tb'>
+	<% if 1 == 1 %>  <!-- ログイン中 -->
+		<!-- for 「word」が１行になるように、DBから降順にiで取り出す  -->
+			<tr>
+				<!-- New -->
+				<% if word.visit=0 then deco='NEW' else deco='' # 訪問チェック %>
+				<td class='col0'>
+          <div class='text-danger'><%= deco %></div>
+				</td>
+
+				<!-- 検索ワード -->
+				<td class='col8'>
+          <a href='https://www.google.com/search?q="'<%= word.content %>'"' target='_blank' class='d-block'><%= word.content %></a>
+				</td>
+
+			  <!-- スター -->  
+				<% if word.star=0 then color='nostar' else color='star' # 色の為のクラス名 %>
+				<td class='col1'>
+          <a href='/update' class='color'><i class='material-icons'>star</i></a>
+				</td>
+
+			  <!-- ごみ箱 -->  
+				<td class='col1'>
+          <a href='/delete'><i class='material-icons'>delete</i></a>
+				</td>
+
+			</tr>
+		<!-- for終わり -->
+	<% end %> <!-- ログアウト中は、id='tb'から勝手に生成してくれる -->
   </tbody>
 </table>
 
 
+<!-- ログインしてない場合は、ローカルストレージのデータと連携 -->
 <script>
-if(1 == 0){ // ログインしてない場合は、ローカルストレージのデータと連携
+if(1 == 0){ 
 	////// この処理は、「新規」ボタンが押されたときのみ。そして本来jsファイルの方に書く
 	// var getWord = function(){  
 		// ローカルストレージに保存
