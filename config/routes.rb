@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get '/' => 'top#index'
 
   # 新しく追加
-  post '/add' => 'top#add'
+  get '/add' => 'top#add'
 
   # 削除
-  post '/:id/delete' => 'top#delete'
+  get '/:id/delete' => 'top#delete'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

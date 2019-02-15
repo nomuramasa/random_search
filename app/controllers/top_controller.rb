@@ -23,6 +23,7 @@ class TopController < ApplicationController
 	  # データベースに保存
 
 
+	  redirect_to('/') # 終わったら一覧へ返す
   end
 
   #### 削除
