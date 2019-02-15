@@ -1,5 +1,10 @@
 @import 'bootstrap';
 
+// Newの色
+.new{
+	opacity:0.3;
+}
+
 // 星の色
 .star{
 	color: #ffcc00 !important;
@@ -40,7 +45,7 @@ tr{
 	//min-height:40px;
 	//line-height:40px;
   //margin:-4px;
-  //margin-left:7px;
+  margin-left:5%;
   //padding-left:15px;
 	//background:#fdd;
 	font-weight:bold;
@@ -48,7 +53,7 @@ tr{
 
 // ホバー時
 .word a:hover{
-	background:#eee;
+	color: #0af;
 }
 
 // 訪問済みかどうかで変化を与える

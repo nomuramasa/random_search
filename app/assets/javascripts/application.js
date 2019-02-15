@@ -95,8 +95,8 @@ var viewStorage = function(){
         tr.appendChild(td4);
 
         // New
-        if(visit == 0){var deco='New！'} else {var deco=''}
-        td1.innerHTML = '<div class="text-danger">' + deco; + '</div>'
+        if(visit == 0){var deco='NEW'} else {var deco=''}
+        td1.innerHTML = '<div class="new text-danger">' + deco; + '</div>'
 
         // 検索ワード
         td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="https://www.google.com/search?q='+ name + '" target="_blank" class="d-block">' + name + '</a>'; 
