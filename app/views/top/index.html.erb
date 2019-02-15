@@ -8,34 +8,37 @@
 <body>
 
 
-
-<!-- <tr> -->
-<!-- <th colspan=3> -->
-<!-- <form action='' method='get'> -->
-<!-- <input type='submit' name='make' value='ワードを追加 ＋' class='btn'> -->
-<!-- </form> -->
+<!-- 新しいワード追加ボタン -->
 <div class='text-center mb-4'>
-	<a href='./' class='btn btn-primary text-center'>新しいワードを追加 ＋</a>
+	<% if 1 == 1 %> <!-- ログイン中のみサーバーの処理を入れる -->
+			<!-- <form action='' method='get'> -->
+			<!-- <input type='submit' name='make' value='ワードを追加 ＋' class='btn'> -->
+			<a href='./' class='btn btn-primary text-center'>新しいワードを追加 ＋</a>
+	<% else %> <!-- ログアウトしてる場合、onclickでjsでcsvデータ取得して、ローストに追加 -->
+			<a href='./' class='btn btn-primary text-center' onclick='getWord()'>新しいワードを追加 ＋</a>
+	<% end %>
 </div>
-<!-- <a onclick='make()'>新しいワードを追加</a> -->
-<!-- </th> -->
-<!-- </tr> -->
+
 
 <table class='table table-sm'>
   <tbody id='tb'>
   </tbody>
-
 </table>
 
+
 <script>
-// ローカルストレージに保存
-uuid = getUniqueStr(); // ユニークなIDを取得　
-var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
-// var _name = '<?php echo makeWord(); ?>'; // ワードを生成してセット
-var _name = '<%= @word_ja %>'; // ワードを生成してセット
-var _star = 0; // 始めはスターなし
-var _visit = 0; // 始めは訪れてない
-saveStorage(Key,_name,_star,_visit); 
+if(1 == 0){ // ログインしてない場合は、ローカルストレージのデータと連携
+	////// 本来この処理は、「新規」ボタンが押されたときのみ。そしてjsファイルの方に書く
+	// var getWord = function(){  
+		// ローカルストレージに保存
+		uuid = getUniqueStr(); // ユニークなIDを取得　
+		var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
+		var _name = '<%= @word_ja %>'; // ワードを生成してセット
+		var _star = 0; // 始めはスターなし
+		var _visit = 0; // 始めは訪れてない
+		saveStorage(Key,_name,_star,_visit); 
+	// }
+}
 </script>
 
 </body>

@@ -1,3 +1,5 @@
+//// 本来ここに、var getWord = function(){} の関数が記述される
+
 // ストレージに追加
 var saveStorage = function(Key,name,star,visit){
   var Value = {name: name, star: star, visit: visit}; // オブジェクトを作る

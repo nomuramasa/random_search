@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/' => 'top#index'
 
   # 新しく追加
-  post '/create' => 'top#create'
+  post '/add' => 'top#add'
 
   # 削除
   post '/:id/delete' => 'top#delete'
