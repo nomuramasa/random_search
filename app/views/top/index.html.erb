@@ -29,8 +29,19 @@ end
 <!-- テーブルを表示 -->
 <table class='table table-sm'>
   <tbody id='tb'>
+
+<!-- 　　i = 101 - i -->
 	<% if 1 == 1 %>  <!-- ログイン中 -->
+		<% for i in 0..@words.length do %>
+			<%= i %>
+		<% end %>
+
 		<!-- for 「word」が１行になるように、DBから降順にiで取り出す  -->
+		<% for i in 0..@words.length-1 do i = @words.length - i %>
+			<% @word = @words.find_by(id:i) %>
+			<%= @word.content %>
+		<% end %>
+		
 			<tr>
 				<!-- New -->
 				<% if word.visit=0 then deco='NEW' else deco='' # 訪問チェック %>
