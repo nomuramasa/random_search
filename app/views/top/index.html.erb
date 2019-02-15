@@ -8,15 +8,20 @@
 <body>
 
 
+<%
+if 1 == 1   # ログイン中の場合
+	link = '/add' # サーバーで処理
+else 1 == 0 # ログアウト中の場合
+	link = './' 
+	action = 'getWord()' # csvデータ取得して、ローカルストレージに追加
+end 
+%>
+
 <!-- 新しいワード追加ボタン -->
 <div class='text-center mb-4'>
-	<% if 1 == 1 %> <!-- ログイン中のみサーバーの処理を入れる -->
+			<a href='<%= link %>' class='btn btn-primary text-center' onclick='<%= action %>'>新しいワードを追加 ＋</a>
 			<!-- <form action='' method='get'> -->
 			<!-- <input type='submit' name='make' value='ワードを追加 ＋' class='btn'> -->
-			<a href='./' class='btn btn-primary text-center'>新しいワードを追加 ＋</a>
-	<% else %> <!-- ログアウトしてる場合、onclickでjsでcsvデータ取得して、ローストに追加 -->
-			<a href='./' class='btn btn-primary text-center' onclick='getWord()'>新しいワードを追加 ＋</a>
-	<% end %>
 </div>
 
 
@@ -28,7 +33,7 @@
 
 <script>
 if(1 == 0){ // ログインしてない場合は、ローカルストレージのデータと連携
-	////// 本来この処理は、「新規」ボタンが押されたときのみ。そしてjsファイルの方に書く
+	////// この処理は、「新規」ボタンが押されたときのみ。そして本来jsファイルの方に書く
 	// var getWord = function(){  
 		// ローカルストレージに保存
 		uuid = getUniqueStr(); // ユニークなIDを取得　
