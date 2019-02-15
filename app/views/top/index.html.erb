@@ -36,7 +36,7 @@ end
 
 			<tr>
 				<!-- New -->
-				<% if word.visit=0 then deco='NEW' else deco='' %> <!-- 訪問チェック -->
+				<% if word.visit=0 then deco='NEW' else deco='' end %> <!-- 訪問チェック -->
 				<td class='col0'>
           <div class='text-danger'><%= deco %></div>
 				</td>
@@ -47,14 +47,14 @@ end
 				</td>
 
 			  <!-- スター -->  
-				<% if word.star=0 then color='nostar' else color='star' %> <!-- 色の為のクラス -->
+				<% if word.star=0 then color='nostar' else color='star' end %> <!-- 色の為のクラス -->
 				<td class='col1'>
-          <a href='/update' class='color'><i class='material-icons'>star</i></a>
+          <a href='/update' class='<%= color %>'><i class='material-icons'>star</i></a>
 				</td>
 
 			  <!-- ごみ箱 -->  
 				<td class='col1'>
-          <a href='/delete'><i class='material-icons'>delete</i></a>
+          <a href='/delete'><i class='material-icons trash'>delete</i></a>
 				</td>
 
 			</tr>
