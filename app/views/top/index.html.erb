@@ -1,6 +1,6 @@
 <!-- 新ワード追加ボタン -->
 <%
-if 1 == 1   # ログイン中の場合
+if @current_user   # ログイン中の場合
 	link = '/add' # サーバーで処理
 else # ログアウト中の場合
 	link = './' 
@@ -19,7 +19,7 @@ end
 <!-- テーブルを表示 -->
 <table class='table table-sm'>
   <tbody id='tb'>
-	<% if 1 == 1 %>  <!-- ログイン中の場合 -->
+	<% if @current_user %>  <!-- ログイン中の場合 -->
 		<% for word in @words %> <!-- DBから降順に取り出す  -->
 			<tr class='row'>
 				<!-- New -->
@@ -48,6 +48,6 @@ end
 
 			</tr>
 		<% end %> <!-- for文終わり -->
-	<% end %> <!-- ログアウト中は、id='tb'から勝手に生成してくれる -->
+	<% end %> <!-- ログアウト中は、id='tb'からJSが勝手に生成してくれる -->
   </tbody>
 </table>
