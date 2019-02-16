@@ -19,7 +19,7 @@ end
 <!-- テーブルを表示 -->
 <table class='table table-sm'>
   <tbody id='tb'>
-	<% if @current_user %>  <!-- ログイン中の場合 -->
+		<% if @words %>  <!-- データあるaru場合 -->
 		<% for word in @words %> <!-- DBから降順に取り出す  -->
 			<tr class='row'>
 				<!-- New -->

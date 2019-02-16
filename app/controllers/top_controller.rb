@@ -1,13 +1,14 @@
 class TopController < ApplicationController
 
+
 	#### 検索ワード一覧ページ表示
   def index
-		@words = Word.all.order(id: :desc)
+		@words = Word.where(user_id: @current_user.id) # ログイン中のユーザーが生成したものだけ選択
+		@words = @words.order(id: :desc) # 新しい順に並び替え
   end
 
   #### 新ワード追加アクション
   def add
-
 		# ランダムワードを生成（本来はcsvファイルなどから取得） 
 		@rand_url = 'https://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%81%8A%E3%81%BE%E3%81%8B%E3%81%9B%E8%A1%A8%E7%A4%BA' # Wikipediaおまかせ表示のURL。「https://ja.wikipedia.org/wiki/特別：おまかせ表示」と同じ。「https://ja.wikipedia.org/wiki/Special:Randompage」からのリダイレクト先
 
