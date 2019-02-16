@@ -73,6 +73,7 @@ class UserController < ApplicationController
       # 認証（has_secure_passwordメソッドが有効なので、
       # @userのpassword_digestと、入力したパスワードが、一致してるか判定してくれる）
       # if @user.authenticate(params[:password])  # パスワードも一致
+        session[:user_id] = @user.id
         flash[:notice] = 'ログインしました'
         redirect_to('/')
       else
