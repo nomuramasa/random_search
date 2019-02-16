@@ -18,10 +18,12 @@ class UserController < ApplicationController
   def create
   	@user = User.new(
       name:params[:name], 
-      email:params[:email]
+      email:params[:email],
+      password:params[:password]
     )
   	if @user.save # 保存できたら、登録成功
-			flash[:notice] = 'ユーザーを登録しました'
+      flash[:notice] = 'ユーザーを登録しました'
+			session[:user_id] = @user.id # ログイン状態へ
 			redirect_to("/user/#{@user.id}") # 詳細ページへ
 		else # 保存できなかったら、登録失敗
 			render('user/new') # newアクションを経由せずに（createアクションの@userデータを持ったまま）直接、新規登録画面に
@@ -37,6 +39,7 @@ class UserController < ApplicationController
   	@user = User.find_by(id:params[:id])
   	@user.name = params[:name]
     @user.email = params[:email]
+    @user.password = params[:password]
 
   	if @user.save # 成功
   		flash[:notice] = 'ユーザー情報を変更しました'

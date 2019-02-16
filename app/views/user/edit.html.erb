@@ -10,5 +10,6 @@
 <%= form_tag("/user/#{@user.id}/update") do %>
 	<p>ユーザー名	<input name='name' value='<%= @user.name %>'></p>
 	<p>メールアドレス<input name='email' value='<%= @user.email %>'></p>
+	<p>パスワード<input type='password' name='password' value='<%= @user.password %>'></p>
 	<input type='submit' value='更新'>
 <% end %>
