@@ -1,5 +1,18 @@
 @import 'bootstrap';
 
+// リンク
+a, a:hover{
+	text-decoration:none;
+}
+
+// ナビゲーションの色
+nav a{
+	color:#fff;
+}
+nav a:hover{
+	color:#aaa;
+}
+
 // Newの色
 .new{
 	opacity:0.4;
@@ -41,7 +54,6 @@ tr{
 // 検索ワード
 .word a{
 	color: #000;
-	text-decoration:none;
 	//min-height:40px;
 	//line-height:40px;
   //margin:-4px;

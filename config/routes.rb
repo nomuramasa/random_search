@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'user/index'
+  get 'user/show'
+  get 'user/new'
+  get 'user/edit'
   ####### トップページ
 
   # 検索ワード一覧
@@ -16,6 +20,28 @@ Rails.application.routes.draw do
 
   # 削除
   get '/:id/delete' => 'top#delete'
+
+
+
+  ####### ユーザー
+
+  # 一覧
+  get '/user' => 'user#index'
+
+  # 新規
+  get '/user/signup' => 'user#new'
+  post '/user/create' => 'user#create'
+
+  # 編集
+  get '/user/:id/edit' => 'user#edit'
+  post '/user/:id/update' => 'user#update'
+
+  # 詳細
+  get '/user/:id' => 'user#show'
+
+
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
