@@ -129,14 +129,14 @@ var viewStorage = function(){
     // }
 };
             
-// window.onload = function() {
-//     viewStorage();
+window.onload = function() {
+    viewStorage();
     
-    // 削除ボタンが押されたら実行
+    // 削除ボタンが押されたら実行 // これいる？？？
     // document.getElementById('clear').onclick = function() { 
-        // clearStorage();
+    //     clearStorage();
     // }; 
-// };
+};
 
 
 
