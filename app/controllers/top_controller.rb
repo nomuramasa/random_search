@@ -22,7 +22,12 @@ class TopController < ApplicationController
 	  end
 
 	  # データベースに保存
-	  @word = Word.new(content:@word_ja, star:0, visit:0)
+	  @word = Word.new(
+	  	content: @word_ja,
+	  	star: 0,
+	  	visit: 0,
+	  	user_id: @current_user.id
+	  )
 	  @word.save
 	  redirect_to('/') # トップページへ
   end
