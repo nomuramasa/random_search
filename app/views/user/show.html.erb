@@ -1,2 +1,36 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1>ユーザー詳細</h1>
+
+<table class='table table-sm'>
+	<tr>
+		<th>id</th>
+		<th>名前</th>
+		<th>メールアドレス</th>
+	</tr>
+	<tr>
+		<td><%= @user.id %></td>
+		<td><%= @user.name %></td>
+		<td><%= @user.email %></td>
+	</tr>
+	<tr>
+	</tr>
+</table>
+
+
+<!-- <h2>投稿</h2>
+<table class='table'>
+	<tr>
+		<th></th>
+		<td>
+
+		</td>
+	</tr>
+</table> -->
+
+<br>
+
+<!-- これだとログインしてない時に「@current_user.idって何」ってなるけど大丈夫？ バリデ必要？？ -->
+<% if @current_user != nil %> <!-- バリデ付けたからもう大丈夫 -->
+	<% if @user.id == @current_user.id %>
+		<%= link_to("編集", "/users/#{@user.id}/edit") %>
+	<% end %>
+<% end %>
