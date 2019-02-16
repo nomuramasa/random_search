@@ -30,7 +30,10 @@
             <a class='nav-link' href='/login'>ログイン</a> <!-- GETの方の '/login' -->
           </li>
           <li class='nav-item'>
-            <a class='nav-link' href='/logout'>ログアウト</a> <!-- GETの方の '/login' -->
+            <a class='nav-link' href='/logout' data-method='post'>ログアウト</a> <!-- GETの方の '/login' -->
+            <%= 
+            # link_to('ログアウト','/logout', method: :post, class: 'nav-link') 
+            %> <!-- Postメソッド、classはnav-link -->
           </li>
         </ul>
 

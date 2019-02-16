@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   post 'login' => 'user#login'
 
   # ログアウト
-  get 'logout' => 'user#logout'
+  post '/logout' => 'user#logout'
 
 
 
