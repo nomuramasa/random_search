@@ -18,23 +18,34 @@
       <div class='container'>
         <h2><a href='/'>検索棚</a></h2>
 
+        
         <!-- リンク -->
         <ul class='navbar-nav'>
-          <li class='nav-item'>
-            <a class='nav-link' href='/user'>ユーザー一覧</a>
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='/signup'>新規登録</a>
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='/login'>ログイン</a> <!-- GETの方の '/login' -->
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='/logout' data-method='post'>ログアウト</a> <!-- GETの方の '/login' -->
-            <%= 
-            # link_to('ログアウト','/logout', method: :post, class: 'nav-link') 
-            %> <!-- Postメソッド、classはnav-link -->
-          </li>
+
+          <!-- ログイン時 -->
+          <% if session[:user_id] %>
+            <li class='nav-item'>
+              <a class='nav-link' href='/user/<%= session[:user_id] %>'>
+                <%= User.find_by(id:[session[:user_id]]).name %>
+              </a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='/user'>ユーザー一覧</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='/logout'>ログアウト</a>
+            </li>
+
+          <!-- ログアウト時 -->
+          <% else %>
+            <li class='nav-item'>
+              <a class='nav-link' href='/signup'>新規登録</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='/login'>ログイン</a>
+            </li>
+          <% end %>
+
         </ul>
 
      </div>
@@ -48,7 +59,7 @@
         </div>
       </div>
     <% end %>
-<%= session[:user_id] %>
+
     <!-- それぞれのページ -->
     <div class='container mt-3'>
       <%= yield %>
