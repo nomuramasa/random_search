@@ -25,8 +25,8 @@
           <!-- ログイン時 -->
           <% if session[:user_id] %>
             <li class='nav-item'>
-              <a class='nav-link' href='/user/<%= session[:user_id] %>'>
-                <%= User.find_by(id:[session[:user_id]]).name %>
+              <a class='nav-link' href='/user/<%= @current_user.id %>'>
+                <%= @current_user.name %>
               </a>
             </li>
             <li class='nav-item'>
