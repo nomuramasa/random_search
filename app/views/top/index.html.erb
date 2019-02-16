@@ -48,6 +48,11 @@ end
 
 			</tr>
 		<% end %> <!-- for文終わり -->
-	<% end %> <!-- ログアウト中は、id='tb'からJSが勝手に生成してくれる -->
+	<% end %> 
   </tbody>
 </table>
+
+<!-- ログアウト中はjavascriptで、id='tb'からテーブル生成 -->
+<% if @current_user == nil %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<% end %>
