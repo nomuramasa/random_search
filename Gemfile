@@ -71,3 +71,6 @@ gem 'rb-readline'
 
 # スクレイピング
 gem 'mechanize'
+
+# error message to Japanese
+gem 'rails-i18n'
