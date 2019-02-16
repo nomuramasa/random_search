@@ -1,2 +1,13 @@
-<h1>User#edit</h1>
-<p>Find me in app/views/user/edit.html.erb</p>
+<h1>ユーザー編集</h1>
+
+<!-- エラーメッセージ -->
+<% @user.errors.full_messages.each do |message| %>
+	<%= message %>
+	<br>
+<% end %>
+
+<%= form_tag("/user/#{@user.id}/update") do %>
+	<p>ユーザー名	<input name='name' value='<%= @user.name %>'></p>
+	<p>メールアドレス<input name='email' value='<%= @user.email %>'></p>
+	<input type='submit' value='更新'>
+<% end %>

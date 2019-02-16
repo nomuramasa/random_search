@@ -28,9 +28,5 @@
 
 <br>
 
-<!-- これだとログインしてない時に「@current_user.idって何」ってなるけど大丈夫？ バリデ必要？？ -->
-<% if @current_user != nil %> <!-- バリデ付けたからもう大丈夫 -->
-	<% if @user.id == @current_user.id %>
-		<%= link_to("編集", "/users/#{@user.id}/edit") %>
-	<% end %>
-<% end %>
+<div class='btn btn-light'><%= link_to("編集", "/user/#{@user.id}/edit") %></div>
+<div class='btn btn-light ml-3'><%= link_to("退会", "/user/#{@user.id}/delete") %></div>

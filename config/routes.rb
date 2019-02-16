@@ -36,9 +36,11 @@ Rails.application.routes.draw do
   get '/user/:id/edit' => 'user#edit'
   post '/user/:id/update' => 'user#update'
 
+  # 退会
+  get '/user/:id/delete' => 'user#delete'
+  
   # 詳細
   get '/user/:id' => 'user#show'
-
 
 
 

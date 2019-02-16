@@ -12,7 +12,7 @@ class UserController < ApplicationController
 
  	# 新規登録
   def new
-  	@user = User.new
+  	@user = User.new # 空定義
   end
 
   def create
@@ -21,6 +21,7 @@ class UserController < ApplicationController
       email:params[:email]
     )
   	if @user.save # 保存できたら、登録成功
+			flash[:notice] = 'ユーザーを登録しました'
 			redirect_to("/user/#{@user.id}") # 詳細ページへ
 		else # 保存できなかったら、登録失敗
 			render('user/new') # newアクションを経由せずに（createアクションの@userデータを持ったまま）直接、新規登録画面に
@@ -30,7 +31,6 @@ class UserController < ApplicationController
   # ユーザー編集
   def edit
   	@user = User.find_by(id:params[:id])
-
   end
 
   def update
@@ -38,18 +38,19 @@ class UserController < ApplicationController
   	@user.name = params[:name]
     @user.email = params[:email]
 
-    if params[:image]
-      @user.image_name = "#{@user.id}.jpg"
-      image = params[:image]
-      File.binwrite("public/user_images/#{@user.image_name}", image.read)
-    end
-
-  	if @user.save
+  	if @user.save # 成功
   		flash[:notice] = 'ユーザー情報を変更しました'
-  		redirect_to("/users/#{@user.id}")
-  	else
-  		render("users/edit")
-  	end  	
+  		redirect_to("/user/#{@user.id}")
+  	else # 失敗
+  		render("user/edit")
+  	end
   end
 
+  # ユーザー削除
+  def delete
+    @user = User.find_by(id:params[:id])
+    @user.destroy 
+    flash[:notice] = '退会しました'
+	  redirect_to("/user") # ユーザー一覧ページへ
+  end
 end
