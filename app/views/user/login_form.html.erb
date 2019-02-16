@@ -2,22 +2,17 @@
 
 <!-- エラーメッセージ -->
 <% if @error_message %>
-	<%= @error_message %>
+	<div class='my-4 text-danger'>
+		<div class='mb-1'>※ <%= @error_message %></div>
+	</div>
 <% end %>
 
-<%= form_tag('/login') do %>
+<%= form_tag('/login') do %> <!-- こちらはPOSTでルートに送られる'/login' -->
 	<p>メールアドレス
-		<input
-			name='email'
-			value="<%= @email %>"
-		>
+		<input name='email' value='<%= @email %>'dd>
 	</p>
 	<p>パスワード
-		<input 
-			type='password' 
-			name='password' 
-			value="<%= @password %>"
-		>
+		<input type='password' name='password' value='<%= @password %>'dd>
 	</p>
 	<input type='submit' value='ログイン'>
 <% end %>

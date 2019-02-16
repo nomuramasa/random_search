@@ -63,24 +63,25 @@ class UserController < ApplicationController
 
   # ログイン
   def login
-    @user = User.find_by(email: params[:email])
+    @user = User.find_by(email: params[:email]) # POSTで送られたemail値のユーザーをDBから探す
+    @password = params[:password] # 失敗しても初期値にする
+    @email = params[:email] # 失敗しても初期値にする
     if @user # メールが一致
-      # @user = User.find_by(password: @password)
-      # if @user # パスワードも一致
+      @user = User.find_by(password: params[:password], email: params[:email]) # POSTで送られたパスワード値とemail値が両方一致してるユーザーをDBから探す
+      if @user # メールとパスワード両方一致
 
       # 認証（has_secure_passwordメソッドが有効なので、
       # @userのpassword_digestと、入力したパスワードが、一致してるか判定してくれる）
-      if @user.authenticate(params[:password]) 
-        session[:user_id] = @user.id # セッションを代入
+      # if @user.authenticate(params[:password])  # パスワードも一致
         flash[:notice] = 'ログインしました'
-        redirect_to('/posts')
+        redirect_to('/')
       else
         @error_message = 'パスワードが間違っています'
-        render('/users/login_form')
+        render('/user/login_form')
       end
     else
-      @error_message = 'そのメールアドレスは登録されていません'
-      render('/users/login_form')
+      @error_message = 'そのメールアドレスは登録されていません' 
+      render('/user/login_form')
     end
   end
 

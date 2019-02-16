@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/user' => 'user#index'
 
   # 新規
-  get '/user/signup' => 'user#new'
+  get '/signup' => 'user#new'
   post '/user/create' => 'user#create'
 
   # 編集
