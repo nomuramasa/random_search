@@ -53,4 +53,43 @@ class UserController < ApplicationController
     flash[:notice] = '退会しました'
 	  redirect_to("/user") # ユーザー一覧ページへ
   end
+
+
+
+
+  # ログインページ
+  def login_form
+  end
+
+  # ログイン
+  def login
+    @user = User.find_by(email: params[:email])
+    if @user # メールが一致
+      # @user = User.find_by(password: @password)
+      # if @user # パスワードも一致
+
+      # 認証（has_secure_passwordメソッドが有効なので、
+      # @userのpassword_digestと、入力したパスワードが、一致してるか判定してくれる）
+      if @user.authenticate(params[:password]) 
+        session[:user_id] = @user.id # セッションを代入
+        flash[:notice] = 'ログインしました'
+        redirect_to('/posts')
+      else
+        @error_message = 'パスワードが間違っています'
+        render('/users/login_form')
+      end
+    else
+      @error_message = 'そのメールアドレスは登録されていません'
+      render('/users/login_form')
+    end
+  end
+
+  # ログアウト
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = 'ログアウトしました'
+    redirect_to('/login')
+  end
+
+
 end

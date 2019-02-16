@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'user/index'
-  get 'user/show'
-  get 'user/new'
-  get 'user/edit'
   ####### トップページ
 
   # 検索ワード一覧
@@ -42,6 +38,16 @@ Rails.application.routes.draw do
   # 詳細
   get '/user/:id' => 'user#show'
 
+
+
+  ####### ログイン
+
+  # ログイン
+  get 'login' => 'user#login_form'
+  post 'login' => 'user#login'
+
+  # ログアウト
+  post 'logout' => 'user#logout'
 
 
 
