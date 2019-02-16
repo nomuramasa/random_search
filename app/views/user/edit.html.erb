@@ -1,10 +1,11 @@
 <h1>ユーザー編集</h1>
 
 <!-- エラーメッセージ -->
-<% @user.errors.full_messages.each do |message| %>
-	<%= message %>
-	<br>
-<% end %>
+<div class='my-4 text-danger'>
+	<% @user.errors.full_messages.each do |message| %> <!-- saveした時にエラーあったら -->
+		<div class='mb-1'>※ <%= message %></div>
+	<% end %>
+</div>
 
 <%= form_tag("/user/#{@user.id}/update") do %>
 	<p>ユーザー名	<input name='name' value='<%= @user.name %>'></p>
