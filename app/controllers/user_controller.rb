@@ -1,9 +1,17 @@
 class UserController < ApplicationController
 
-  # URL直接打ち込んで書き換えられるのを防ぐセキュリティ
-  before_action :authenticate_user, {only: [:edit, :update]}
+  # ログインが必要です
+  before_action :authenticate_user, {only: [:edit, :update, :delete]}
+
+  # すでにログインしています
   before_action :forbid_login_user, {only: [:new, :create, :login, :login_form]}
-  before_action :cannot_edit_info, {only: [:edit, :update]}
+
+  # 管理者用のページは閲覧できません
+  before_action :only_owner, {only: [:index]}
+
+  # 他のユーザーの情報は、閲覧や編集はできません
+  before_action :cannot_edit_info, {only: [:show, :edit, :update]}
+
 
  	# ユーザー一覧
   def index
