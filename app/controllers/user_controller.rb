@@ -1,16 +1,16 @@
 class UserController < ApplicationController
 
   # ログインが必要です
-  before_action :authenticate_user, {only: [:edit, :update, :delete]}
+  before_action :authenticate_user, {only: [:index, :show, :edit, :update, :delete]}
 
   # すでにログインしています
-  before_action :forbid_login_user, {only: [:new, :create, :login, :login_form]}
+  before_action :alread_login, {only: [:new, :create, :login, :login_form]}
 
-  # 管理者用のページは閲覧できません
+  # 管理者用のページは見れません
   before_action :only_owner, {only: [:index]}
 
   # 他のユーザーの情報は、閲覧や編集はできません
-  before_action :cannot_edit_info, {only: [:show, :edit, :update]}
+  before_action :cannot_edit, {only: [:show, :edit, :update]}
 
 
  	# ユーザー一覧
@@ -67,7 +67,8 @@ class UserController < ApplicationController
     @user = User.find_by(id:params[:id])
     @user.destroy 
     flash[:notice] = '退会しました'
-	  redirect_to("/user") # ユーザー一覧ページへ
+    session[:user_id] = nil
+	  redirect_to("/") # ユーザー一覧ページへ
   end
 
 

@@ -30,19 +30,23 @@
               </a>
             </li>
             <li class='nav-item'>
-              <a class='nav-link' href='/user'>ユーザー一覧</a>
-            </li>
-            <li class='nav-item'>
               <a class='nav-link' href='/logout'>ログアウト</a>
             </li>
+
+            <!-- 管理者としてログインしてる時 -->
+            <% if @current_user.email == 'nomura@mail.com' %>
+              <li class='nav-item'>
+                <a class='nav-link' href='/user'>ユーザー一覧</a>
+              </li>
+            <% end %>
 
           <!-- ログアウト時 -->
           <% else %>
             <li class='nav-item'>
-              <a class='nav-link' href='/signup'>新規登録</a>
+              <a class='nav-link' href='/login'>ログイン</a>
             </li>
             <li class='nav-item'>
-              <a class='nav-link' href='/login'>ログイン</a>
+              <a class='nav-link' href='/signup'>新規登録</a>
             </li>
           <% end %>
 

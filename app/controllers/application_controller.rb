@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
 
-	# 早速、ログイン中のユーザーを定義
+	# まずは、ログイン中のユーザーをセット
   before_action :set_current_user
 
-  # ログイン中のユーザー
+  # ログイン中のユーザーをセット
  	def set_current_user
 		@current_user = User.find_by(id: session[:user_id])
+		# session[:user_id] = nil # session削す
 	end
 
 
@@ -18,36 +19,26 @@ class ApplicationController < ActionController::Base
 	end
 
 	# すでにログインしています
-	def forbid_login_user
+	def alread_login
 		if @current_user
 			flash[:notice] = 'すでにログインしています'
 			redirect_to('/')
 		end
 	end
 
-	# 管理者用のページは閲覧できません
+	# 管理者用のページは見れません
 	def only_owner
-		if @current_user # ログインしてる場合
-			if @current_user.id.to_i != 1.to_i # ID1は管理者
-				flash[:notice] = '管理者用のページは閲覧できません'
-				redirect_to('/')
-			end
-		else # ログインしてない場合
-			flash[:notice] = '管理者用のページは閲覧できません'
-			redirect_to('/')
-		end	
+		if @current_user.email != 'nomura@mail.com' # 管理者のメールアドレス
+			flash[:notice] = '管理者用のページは見れません'
+			redirect_to("/user/#{@current_user.id}") # 自分の詳細ページに戻す
+		end
 	end
 
 	# 他のユーザーの情報は、閲覧や編集はできません
-	def cannot_edit_info
-		if @current_user # ログインしてる場合
-			if @current_user.id.to_i != params[:id].to_i
-				flash[:notice] = '他のユーザーの情報は、閲覧や編集はできません'
-				redirect_to('/')
-			end
-		else # ログインしてない場合
+	def cannot_edit
+		if @current_user.id.to_i != params[:id].to_i
 			flash[:notice] = '他のユーザーの情報は、閲覧や編集はできません'
-			redirect_to('/')
+			redirect_to("/user/#{@current_user.id}") # 自分の詳細ページに戻す
 		end
 	end
 
