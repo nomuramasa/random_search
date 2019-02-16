@@ -1,16 +1,16 @@
 <h1>ユーザー一覧</h1>
 
 <table class='table'>
-<% @users.each do |user| %>
 	<tr>
 		<th>ID</th>
 		<th>名前</th>
 		<th>メール</th>
 	</tr>
-	<tr>
-		<td><%= user.id %></td>
-		<td><%= link_to(user.name, "/user/#{user.id}") %></td>
-		<td><%= user.email %></td> 
-	</tr>
-<% end %>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.id %></td>
+			<td><%= link_to(user.name, "/user/#{user.id}") %></td>
+			<td><%= user.email %></td> 
+		</tr>
+	<% end %>
 </table>
