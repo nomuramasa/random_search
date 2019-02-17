@@ -17,19 +17,48 @@ class TopController < ApplicationController
 
   #### 新ワード追加アクション
   def add
-		# ランダムワードを生成（本来はcsvファイルなどから取得） 
-		@rand_url = 'https://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%81%8A%E3%81%BE%E3%81%8B%E3%81%9B%E8%A1%A8%E7%A4%BA' # Wikipediaおまかせ表示のURL。「https://ja.wikipedia.org/wiki/特別：おまかせ表示」と同じ。「https://ja.wikipedia.org/wiki/Special:Randompage」からのリダイレクト先
 
-		require 'net/http'
-	  @response = Net::HTTP.get_response(URI.parse(@rand_url))
-	  @redi_url = @response['location'] # 最終リダイレクト。 ランダムワードを含むURL
-	  @word = @redi_url.delete('https://ja.wikipedia.org/wiki/') # Wikipediaがランダムに探したワード
-	  @word_ja = URI.decode(@word) # URL文字 → 読める言葉 にデコード
+		# ランダムワードを生成（本来はcsvファイルなどから取得） 		
+		ran_num = rand(100) # サイトを振り分ける為の乱数を生成
 
-	  if @word_ja.include?('_')
-	  	@word_ja = @word_ja.sub!(/_.*/m, '') # アンダーバー_以降を削除
-	  end
+
+		### Wikipedia 50% 
+		if ran_num < 40
+
+			# rand_url = 'https://ja.wikipedia.org/wiki/Special:Randompage' 
+			rand_url = 'https://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%81%8A%E3%81%BE%E3%81%8B%E3%81%9B%E8%A1%A8%E7%A4%BA' # Wikipediaおまかせ表示のURL
+
+
+			require 'net/http'
+		  response = Net::HTTP.get_response(URI.parse(rand_url))
+		  redi_url = response['location'] # 最終リダイレクト。 ランダムワードを含むURL
+		  word = redi_url.delete('https://ja.wikipedia.org/wiki/') # Wikipediaがランダムに探したワード
+		  @word_ja = URI.decode(word) # URL文字 → 読める言葉 にデコード
+
+		  if @word_ja.include?('_')
+		  	@word_ja = @word_ja.sub!(/_.*/m, '') # アンダーバー_以降を削除
+		  end
 	  
+	  ### weblio 50% 
+	  elsif ran_num < 100  
+
+	  	# rand_url = 'https://www.weblio.jp/content_find?random-select'
+	  	rand_url = 'https://www.weblio.jp/WeblioRandomSelectServlet' 
+
+			require 'net/http'
+		  response = Net::HTTP.get_response(URI.parse(rand_url)) #<Net::HTTPFound:0x00007fb0dbbee5e0>
+		  redi_url = response['location'] # https://www.weblio.jp/content/%E7%9C%9F%E9%8D%AE
+		  word = redi_url.delete('https://www.weblio.jp/content/') # %E7%9C%9F%E9%8D%AE
+		  @word_ja = URI.decode(word) # デコード
+
+		  if @word_ja.include?('+')
+		  	@word_ja = @word_ja.gsub(/\+/, ' ') # 「+」を全てスペースに置換
+		  end
+	  ### その他 50% 
+	  # elsif ran_num < 100
+
+	  end
+
 
 	  if @current_user == nil # ログアウト中は、
 	  	return @word_ja # ランダム生成した、このワードが必要なので返す（ローカルストレージの方へ入れるから）
