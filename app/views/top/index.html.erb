@@ -1,25 +1,15 @@
-<!-- 新ワード追加ボタン -->
+<!-- ボタンのリンク先 rubyとjsで分ける -->
+<% if @current_user then link = '/add' else link = './' end %>
 
-<% # リンク先
-if @current_user   # ログイン中の場合
-	link = '/add' # サーバーで処理
-else # ログアウト中の場合
-	link = './' # リロード 
-end 
-%>
-
+<!-- ワード追加のボタン -->
 <div class='text-center mb-4'>
 	<a href='<%= link %>' id='get_word' class='btn btn-primary text-center'>新しいワードを追加 ＋</a>
-	<!-- <form action='' method='get'> -->
-	<!-- <input type='submit' name='make' value='ワードを追加 ＋' class='btn'> -->
 </div>
 
-
-
-<!-- テーブルを表示 -->
-<table class='table table-sm'>
-  <tbody id='tb'>
-  	<% if @current_user %>
+<!-- ログイン中は、Rubyでテーブル表示 -->
+<% if @current_user %>
+	<table class='table table-sm'>
+	  <tbody id='tb'>
 			<% for word in @words %> <!-- DBから取り出す  -->
 				<% user = User.find_by(id: word.user_id) %> <!-- それぞれの単語ごとにユーザーを特定 -->
 				<tr class='row'>
@@ -50,12 +40,18 @@ end
 
 				</tr>
 			<% end %> <!-- for文終わり -->
-			<% end %> <!-- if -->
-  </tbody>
-</table>
+	  </tbody>
+	</table>
+<% end %> <!-- if -->
 
-<!-- ログアウト中はjavascriptで、id='tb'からテーブル生成 -->
+
+<!-- ログアウト中は、javascriptで、id='tb'を元にテーブル生成 -->
 <% if @current_user == nil %>
+
+	<table class='table table-sm'>
+	  <tbody id='tb'></tbody>
+	</table>
+
 	<script>
 		var word = '<%= add() %>' // top_controllerから、生成されたワードを呼び出す
 		// 新ワード追加ボタンでonclick起こす前に（ページ読み込み時に）もう単語出来上がらせる
