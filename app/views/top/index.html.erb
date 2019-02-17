@@ -19,8 +19,9 @@ end
 <!-- テーブルを表示 -->
 <table class='table table-sm'>
   <tbody id='tb'>
-		<% if @words %>  <!-- データあるaru場合 -->
-		<% for word in @words %> <!-- DBから降順に取り出す  -->
+		<% for word in @words %> <!-- DBから取り出す  -->
+			<% user = User.find_by(id: word.user_id) %> <!-- それぞれの単語ごとにユーザーを特定 -->
+			<% user = word.user %> 
 			<tr class='row'>
 				<!-- New -->
 				<% if word.visit==0 then deco='NEW' else deco='' end %> <!-- 訪問チェック -->
@@ -31,7 +32,7 @@ end
 				<!-- 検索ワード -->
 				<td class='col-8 col-lg-9 word'>
           <a href='<%= "/#{word.id}/visit" %>' onclick='window.open("https://www.google.com/search?q=<%= "#{word.content}" %>")' class='d-block'> <!-- visitアクション起こすと同時に、jsでGoogleブラウザ開く -->
-	        	<%= word.content %>
+	        	<%= word.content %> <%= user.id %>
         	</a>
 				</td>
 
@@ -48,7 +49,6 @@ end
 
 			</tr>
 		<% end %> <!-- for文終わり -->
-	<% end %> 
   </tbody>
 </table>
 

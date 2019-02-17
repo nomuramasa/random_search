@@ -3,7 +3,8 @@ class TopController < ApplicationController
 
 	#### 検索ワード一覧ページ表示
   def index
-		@words = Word.where(user_id: @current_user.id) # ログイン中のユーザーが生成したものだけ選択
+  	@words = Word.all
+		# @words = Word.where(user_id: @current_user.id) # ログイン中のユーザーが生成したものだけ選択
 		@words = @words.order(id: :desc) # 新しい順に並び替え
   end
 
