@@ -1,3 +1,4 @@
+// 新しいワード追加ボタンを押されたとき
 $('#get_word').one('click', function getWord() { // oneだから1回だけ有効
   // ストレージに保存する値をセット
   uuid = getUniqueStr(); // ユニークなIDを取得　

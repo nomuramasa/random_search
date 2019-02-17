@@ -9,6 +9,14 @@
 <!-- ログイン中は、Rubyでテーブル表示 -->
 <% if @current_user %>
 	<table class='table table-sm'>
+		<thead class='thead-light'>
+			<tr class='row'>
+				<th class='col-2 col-lg-1'></th>
+				<th class='col-8 col-lg-9'>検索ワード</th>
+				<th class='col-1 col-lg-1'>目印</th>
+				<th class='col-1 col-lg-1'>削除</th>
+			</tr>
+		</thead>
 	  <tbody id='tb'>
 			<% for word in @words %> <!-- DBから取り出す  -->
 				<% user = User.find_by(id: word.user_id) %> <!-- それぞれの単語ごとにユーザーを特定 -->
