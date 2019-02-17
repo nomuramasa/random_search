@@ -1,3 +1,61 @@
+// ローカルストレージのデータを表に出力する関数
+var viewStorage = function(){
+  var tb = document.getElementById('tb') // tbody
+
+  // テーブルの初期化
+  while (tb.firstChild){ tb.removeChild(tb.firstChild) }
+
+  // テーブルの出力
+  for (var i=localStorage.length-1; i>=0; i--) {
+
+    var id = localStorage.key(i);
+    var getjson = localStorage.getItem(id); 
+    var obj = JSON.parse(getjson); // JSON → オブジェクト
+
+
+    // 行
+    var tr = document.createElement('tr');  
+    tr.classList.add('row'); 
+    tb.appendChild(tr);
+
+
+    // New
+    var td1 = document.createElement('td');
+    td1.classList.add('col-2', 'col-lg-1');
+    tr.appendChild(td1);
+
+    if(obj.visit == 0){var deco='NEW'} else {var deco=''}
+    td1.innerHTML = '<div class="text-danger new">' + deco; + '</div>'
+
+
+    // 検索ワード
+    var td2 = document.createElement('td'); 
+    td2.classList.add('col-8', 'col-lg-9', 'word');
+    tr.appendChild(td2);
+
+    td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="https://www.google.com/search?q='+ obj.name + '" target="_blank" class="d-block">' + obj.name + '</a>'; 
+
+
+    // スター
+    var td3 = document.createElement('td'); 
+    td3.classList.add('col-1', 'col-lg-1');
+    tr.appendChild(td3);
+
+    if(obj.star == 0){var color='nostar'} else {var color='star'}
+    td3.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'star\')" class=" '+ color +'"><i class="material-icons">star</i></a>';
+
+
+    // ごみ箱
+    var td4 = document.createElement('td'); 
+    td4.classList.add('col-1', 'col-lg-1');
+    tr.appendChild(td4);
+
+    td4.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="trash"><i class="material-icons">delete</i></a>';
+  }
+}
+      
+
+
 // 新しいワード追加ボタンを押されたとき
 $('#get_word').one('click', function getWord() { // oneだから1回だけ有効
   // ストレージに保存する値をセット
@@ -61,81 +119,11 @@ function getUniqueStr(myStrong){
  if (myStrong) strong = myStrong;
  return new Date().getTime().toString(16)  + Math.floor(strong*Math.random()).toString(16)
 }
-
-// ローカルストレージのデータを表に出力
-var viewStorage = function(){
-  var tb = document.getElementById('tb')
-
-  // テーブルの初期化
-  while (tb.firstChild){
-    tb.removeChild(tb.firstChild);
-  }
-
-  // テーブルの出力
-  for (var i=localStorage.length-1; i>=0; i--) {
-    var id = localStorage.key(i);
-    var getjson = localStorage.getItem(id); 
-    var obj = JSON.parse(getjson); // JSON → オブジェクト
-    var name = obj.name;
-    var star = obj.star;
-    var visit = obj.visit;
-
-    var tr = document.createElement('tr'); // 行 
-    // tr.classList.add('justify-content-between'); //テーブルの列を両端から均等に並べる
-    // tr.classList.add('table-info'); // 行に背景色指定
-
-    var td1 = document.createElement('td'); // 訪問チェック
-    td1.classList.add('col-0'); // 列幅調整
-
-    var td2 = document.createElement('td'); // 検索ワード
-    td2.classList.add('col-8'); // 列幅調整
-    td2.classList.add('word'); // 単語には特徴のあるCSSを付けたい
-    // td2.classList.add('text-center'); // 真ん中揃え？？
-
-    var td3 = document.createElement('td'); // スター
-    td3.classList.add('col-1'); // 列幅調整
-
-    var td4 = document.createElement('td'); // ごみ箱
-    td4.classList.add('col-1'); // 列幅調整
-
-    tb.appendChild(tr);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-    tr.appendChild(td4);
-
-    // New
-    if(visit == 0){var deco='NEW'} else {var deco=''}
-    td1.innerHTML = '<div class="text-danger new">' + deco; + '</div>'
-
-    // 検索ワード
-    td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="https://www.google.com/search?q='+ name + '" target="_blank" class="d-block">' + name + '</a>'; 
-
-    // スター  
-    if(star == 0){var color='nostar'} else {var color='star'}
-    td3.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'star\')" class=" '+ color +'"><i class="material-icons">star</i></a>';
-
-    // ごみ箱
-    td4.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="trash"><i class="material-icons">delete</i></a>';
-  }
-  
-    // if(localStorage.length > 5){ // ストレージのデータが10個を超えたら
-      // tr_long = document.createElement('tr').setAttribute("colspan", "3"); //エラー
-      // tb.appendChild(tr_long); td_long = document.createElement('td'); tr_long.appendChild(td_long);
-
-      // 全て削除のごみ箱
-      // td_long.innerHTML = '<a onclick="clearStorage()">全て削除<i class="material-icons point trash">delete_forever</i></a>';
-    // }
-};
-            
+      
+// ページ読み込み完了時 
 window.onload = function() {
     viewStorage();
-    
-    // 削除ボタンが押されたら実行 // これいる？？？
-    // document.getElementById('clear').onclick = function() { 
-    //     clearStorage();
-    // }; 
-};
+}
 
 
 
