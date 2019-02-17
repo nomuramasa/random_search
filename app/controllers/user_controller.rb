@@ -80,16 +80,13 @@ class UserController < ApplicationController
 
   # ログイン
   def login
-    @user = User.find_by(email: params[:email]) # POSTで送られたemail値のユーザーをDBから探す
-    @password = params[:password] # 失敗しても初期値にする
     @email = params[:email] # 失敗しても初期値にする
-    if @user # メールが一致
-      @user = User.find_by(password: params[:password], email: params[:email]) # POSTで送られたパスワード値とemail値が両方一致してるユーザーをDBから探す
-      if @user # メールとパスワード両方一致
+    @password = params[:password] # 失敗しても初期値にする
 
-      # 認証（has_secure_passwordメソッドが有効なので、
-      # @userのpassword_digestと、入力したパスワードが、一致してるか判定してくれる）
-      # if @user.authenticate(params[:password])  # パスワードも一致
+    @user = User.find_by(email: @email) # POSTで送られたemail値のユーザーをDBから探す
+    if @user # メールアドレスが存在
+      if @user && @user.authenticate(@password) # メールとパスワード両方一致 # パスワード認証
+     
         session[:user_id] = @user.id
         flash[:notice] = 'ログインしました'
         redirect_to('/')
