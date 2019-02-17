@@ -1,14 +1,12 @@
-var getWord = function(){  
-
-  // ローカルストレージに保存する要素をセット
+$('#get_word').one('click', function getWord() { // oneだから1回だけ有効
+  // ストレージに保存する値をセット
   uuid = getUniqueStr(); // ユニークなIDを取得　
   var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
   var _name = word; // topのviewでセットしたワード
   var _star = 0; // 始めはスターなし
   var _visit = 0; // 始めは訪れてない
   saveStorage(Key,_name,_star,_visit); 
-  $('#add_button').removeEventListener('onclick');
-}
+});
 
 
 // ストレージに追加

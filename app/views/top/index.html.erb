@@ -1,15 +1,15 @@
 <!-- 新ワード追加ボタン -->
-<%
+
+<% # リンク先
 if @current_user   # ログイン中の場合
 	link = '/add' # サーバーで処理
 else # ログアウト中の場合
-	link = '' 
-	action = 'getWord()' # csvデータ取得して、ローカルストレージに追加
+	link = './' # リロード 
 end 
 %>
 
 <div class='text-center mb-4'>
-	<a href='<%= link %>' id='add_button' class='btn btn-primary text-center' onclick='<%= action %>'>新しいワードを追加 ＋</a>
+	<a href='<%= link %>' id='get_word' class='btn btn-primary text-center'>新しいワードを追加 ＋</a>
 	<!-- <form action='' method='get'> -->
 	<!-- <input type='submit' name='make' value='ワードを追加 ＋' class='btn'> -->
 </div>
@@ -60,6 +60,7 @@ end
 		var word = '<%= add() %>' // top_controllerから、生成されたワードを呼び出す
 		// 新ワード追加ボタンでonclick起こす前に（ページ読み込み時に）もう単語出来上がらせる
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<!-- applcation.jsを読み込む -->
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <% end %>
