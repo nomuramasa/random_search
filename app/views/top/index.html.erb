@@ -3,13 +3,13 @@
 if @current_user   # ログイン中の場合
 	link = '/add' # サーバーで処理
 else # ログアウト中の場合
-	link = './' 
+	link = '' 
 	action = 'getWord()' # csvデータ取得して、ローカルストレージに追加
 end 
 %>
 
 <div class='text-center mb-4'>
-	<a href='<%= link %>' class='btn btn-primary text-center' onclick='<%= action %>'>新しいワードを追加 ＋</a>
+	<a href='<%= link %>' id='add_button' class='btn btn-primary text-center' onclick='<%= action %>'>新しいワードを追加 ＋</a>
 	<!-- <form action='' method='get'> -->
 	<!-- <input type='submit' name='make' value='ワードを追加 ＋' class='btn'> -->
 </div>

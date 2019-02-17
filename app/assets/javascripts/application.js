@@ -1,11 +1,13 @@
 var getWord = function(){  
-  // ローカルストレージに保存
+
+  // ローカルストレージに保存する要素をセット
   uuid = getUniqueStr(); // ユニークなIDを取得　
   var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
   var _name = word; // topのviewでセットしたワード
   var _star = 0; // 始めはスターなし
   var _visit = 0; // 始めは訪れてない
   saveStorage(Key,_name,_star,_visit); 
+  $('#add_button').removeEventListener('onclick');
 }
 
 
@@ -32,11 +34,9 @@ var changeStorage = function(id, purpose){
 
   if(purpose == 'star'){ // スター目的の場合
     if(obj.star == 0){_star = 1} else{_star = 0}  // スター変更
-    console.log('S')
   }
   if(purpose == 'visit'){ // 訪問チェック目的の場合
     _visit = 1
-    console.log('V')
   }
   saveStorage(_id, _name, _star, _visit); //あとは追加の時と同じ
 }
