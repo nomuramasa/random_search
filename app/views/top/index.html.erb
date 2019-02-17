@@ -56,5 +56,10 @@ end
 
 <!-- ログアウト中はjavascriptで、id='tb'からテーブル生成 -->
 <% if @current_user == nil %>
+	<script>
+		var word = '<%= add() %>' // top_controllerから、生成されたワードを呼び出す
+		// 新ワード追加ボタンでonclick起こす前に（ページ読み込み時に）もう単語出来上がらせる
+	</script>
+	<!-- applcation.jsを読み込む -->
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <% end %>

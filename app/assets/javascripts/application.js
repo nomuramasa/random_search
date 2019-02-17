@@ -2,7 +2,7 @@ var getWord = function(){
   // ローカルストレージに保存
   uuid = getUniqueStr(); // ユニークなIDを取得　
   var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
-  var _name = '辞書から取ってきた単語'; // ワードを生成してセット
+  var _name = word; // topのviewでセットしたワード
   var _star = 0; // 始めはスターなし
   var _visit = 0; // 始めは訪れてない
   saveStorage(Key,_name,_star,_visit); 

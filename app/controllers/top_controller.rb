@@ -4,6 +4,8 @@ class TopController < ApplicationController
   before_action :donot_houch_other_users_word, {only: [:visit, :update, :delete]}
 
 
+  ####### 以下は全て、リンクを押すことでしか発生しない関数
+
 	#### 検索ワード一覧ページ表示
   def index
   	if @current_user
@@ -27,16 +29,21 @@ class TopController < ApplicationController
 	  if @word_ja.include?('_')
 	  	@word_ja = @word_ja.sub!(/_.*/m, '') # アンダーバー_以降を削除
 	  end
+	  
 
-	  # データベースに保存
-	  @word = Word.new(
-	  	content: @word_ja,
-	  	star: 0,
-	  	visit: 0,
-	  	user_id: @current_user.id 
-	  )
-	  @word.save
-	  redirect_to('/') # トップページへ
+	  if @current_user == nil # ログアウト中は、
+	  	return @word_ja # ランダム生成した、このワードが必要なので返す（ローカルストレージの方へ入れるから）
+
+	  else # ログイン中は、
+		  @word = Word.new( # データベースに保存
+		  	content: @word_ja,
+		  	star: 0,
+		  	visit: 0,
+		  	user_id: @current_user.id 
+		  )
+		  @word.save
+		  redirect_to('/') # トップページへ
+		end
   end
 
   #### 検索ワードをクリック
@@ -63,5 +70,8 @@ class TopController < ApplicationController
     @word.destroy
 	  redirect_to('/') # トップページへ
   end
+
+
+	helper_method :add # routesからだけじゃなくviewからも呼び出したい
 
 end
