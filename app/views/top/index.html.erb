@@ -32,7 +32,8 @@ end
 					<!-- 検索ワード -->
 					<td class='col-8 col-lg-9 word'>
 	          <a href='<%= "/#{word.id}/visit" %>' onclick='window.open("https://www.google.com/search?q=<%= "#{word.content}" %>")' class='d-block'> <!-- visitアクション起こすと同時に、jsでGoogleブラウザ開く -->
-		        	<%= word.content %> <%= user.id %>
+		        	<%= word.content %> 
+		        	<!-- <%= user.id %>  その単語のユーザーID--> 
 	        	</a>
 					</td>
 

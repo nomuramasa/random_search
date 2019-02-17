@@ -1,11 +1,16 @@
 class TopController < ApplicationController
 
+	# 他のユーザーが持つ単語に関して、影響を与えることは出来ません
+  before_action :donot_houch_other_users_word, {only: [:visit, :update, :delete]}
+
 
 	#### 検索ワード一覧ページ表示
   def index
-  	@words = Word.all
-		# @words = Word.where(user_id: @current_user.id) # ログイン中のユーザーが生成したものだけ選択
-		@words = @words.order(id: :desc) # 新しい順に並び替え
+  	if @current_user
+	  	# @words = Word.all
+			@words = Word.where(user_id: @current_user.id) # ログイン中のユーザーが生成したものだけ選択
+			@words = @words.order(id: :desc) # 新しい順に並び替え
+		end
   end
 
   #### 新ワード追加アクション
@@ -28,7 +33,7 @@ class TopController < ApplicationController
 	  	content: @word_ja,
 	  	star: 0,
 	  	visit: 0,
-	  	user_id: @current_user.id
+	  	user_id: @current_user.id 
 	  )
 	  @word.save
 	  redirect_to('/') # トップページへ
