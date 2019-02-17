@@ -74,3 +74,7 @@ gem 'mechanize'
 
 # error message to Japanese
 gem 'rails-i18n'
+
+
+# encryption password
+gem 'bcrypt'
