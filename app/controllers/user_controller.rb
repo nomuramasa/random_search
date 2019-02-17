@@ -85,7 +85,7 @@ class UserController < ApplicationController
 
     @user = User.find_by(email: @email) # POSTで送られたemail値のユーザーをDBから探す
     if @user # メールアドレスが存在
-      if @user && @user.authenticate(@password) # メールとパスワード両方一致 # パスワード認証
+      if @user && @user.authenticate(@password) # メール・暗号化されたパスワード、両方一致 
      
         session[:user_id] = @user.id
         flash[:notice] = 'ログインしました'

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-	has_secure_password
+	has_secure_password # パスワードの暗号化
 
 	validates :name, {presence:true} # 名前空はダメ
 	validates :email, {presence:true} # メールアドレス空はダメ
