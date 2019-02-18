@@ -1,4 +1,15 @@
-@import 'bootstrap';
+@import 'bootstrap'; 
+
+// 新ワードボタン
+#get_word.btn-warning {
+	color: white;
+  background-color: #ee6e00;
+  border-color: #ee6e00;
+}
+#get_word.btn-warning:hover {
+  background-color: #dd6e00;
+  border-color: #dd6e00;
+}
 
 // リンク
 a, a:hover{
@@ -15,7 +26,7 @@ nav a:hover{
 
 // Newの色
 .new{
-	opacity:0.4;
+	color: #fbb
 }
 
 // 星の色

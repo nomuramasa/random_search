@@ -100,6 +100,11 @@ class TopController < ApplicationController
 	  redirect_to('/') # トップページへ
   end
 
+  #### サイトの種類
+  # def site_kind
+  # 	session[:go_site] = 'google'
+  # end
+
 
 	helper_method :add # routesからだけじゃなくviewからも呼び出したい
 

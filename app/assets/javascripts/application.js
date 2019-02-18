@@ -25,7 +25,7 @@ var viewStorage = function(){
     tr.appendChild(td1);
 
     if(obj.visit == 0){var deco='NEW'} else {var deco=''}
-    td1.innerHTML = '<div class="text-danger new">' + deco; + '</div>'
+    td1.innerHTML = '<div class="new">' + deco; + '</div>'
 
 
     // 検索ワード

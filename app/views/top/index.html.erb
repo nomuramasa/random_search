@@ -3,14 +3,17 @@
 
 <!-- ワード追加のボタン -->
 <div class='text-center mb-4'>
-	<a href='<%= link %>' id='get_word' class='btn btn-primary text-center'>新しいワードを追加 ＋</a>
+	<a href='<%= link %>' id='get_word' class='btn btn-warning text-center'>新しいワードを追加 ＋</a>
 </div>
 
 <table class='table table-sm'>
 	<thead class='thead-light'>
 		<tr class='row'>
 			<th class='col-2 col-lg-1'></th>
-			<th class='col-8 col-lg-9'>検索ワード</th>
+			<th class='col-8 col-lg-9'>
+				<!-- TwitterやYoutubeのリンクをsessionの値によって場合分け -->
+				Google検索
+			</th>
 			<th class='col-1 col-lg-1'>目印</th>
 			<th class='col-1 col-lg-1'>削除</th>
 		</tr>
@@ -26,7 +29,7 @@
 				<!-- New -->
 				<% if word.visit==0 then deco='NEW' else deco='' end %> <!-- 訪問チェック -->
 				<td class='col-2 col-lg-1'>
-          <div class='text-danger new'><%= deco %></div>
+          <div class='new'><%= deco %></div>
 				</td>
 
 				<!-- 検索ワード -->
@@ -61,7 +64,7 @@
 		</script>
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<!-- applcation.jsを読み込む -->
+		<!-- application.jsを読み込む（/app/assets/javascript/application.js） -->
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 		
 	<% end %>
