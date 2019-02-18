@@ -8,10 +8,17 @@ class TopController < ApplicationController
 
 	#### 検索ワード一覧ページ表示
   def index
-  	if @current_user
+		# サイト切り替えのための、名と色をセット
+		@sites = [
+			[name: 'Google', color: 'dark'],
+			[name: 'Youtube', color: 'danger'],
+			[name: 'Twitter', color: 'primary']
+		]
+  	if @current_user # ログイン時のみ
 	  	# @words = Word.all
 			@words = Word.where(user_id: @current_user.id) # ログイン中のユーザーが生成したものだけ選択
 			@words = @words.order(id: :desc) # 新しい順に並び替え
+
 		end
   end
 

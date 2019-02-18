@@ -11,13 +11,27 @@
 		<tr class='row'>
 			<th class='col-2 col-lg-1'></th>
 			<th class='col-8 col-lg-9'>
-				
-				<!-- TwitterやYoutubeのリンクをsessionの値によって場合分け -->
- 				<% if session[:site] == nil then session[:site] = 'Google' end %> <!-- 初期値 -->
-				<a href='Google/change_site' class='btn btn-dark btn-sm <% if session[:site] != "Google" %>mute<% end %>'>Google</a>	
-				<a href='Youtube/change_site' class='btn btn-danger btn-sm <% if session[:site] != "Youtube" %>mute<% end %>'>Youtube</a>	
-				<a href='Twitter/change_site' class='btn btn-primary btn-sm <% if session[:site] != "Twitter" %>mute<% end %>'>Twitter</a>	
-				<!-- パラメータにはサイト名を指定（params[:site]/change_go） -->
+
+
+				<!-- Google・Twitter・Youtubeのリンクを、sessionの値によって場合分け -->
+
+ 				<% if session[:site] == nil then session[:site] = 'Google' end %> <!-- 最初の値はGoogle -->
+
+ 				<!-- controllerでセットしたサイト名と色を取り出していく -->
+ 				<% for site in @sites %>
+					<!-- パラメータにはサイト名を指定（Google/change_site） -->
+					<a 
+						href='<%= site[0][:name] %>/change_site'
+						class='
+							btn btn-<%= site[0][:color] %> btn-sm 
+							<% if session[:site] != "#{site[0][:name]}" %>
+								mute
+							<% end %>
+						'
+					>
+					<%= site[0][:name] %></a>	
+				<% end %>
+
 	
 			</th>
 			<th class='col-1 col-lg-1'><span class='d-none d-md-block'>目印</span></th>
@@ -41,7 +55,8 @@
 
 
 				<!-- 検索ワード -->
-				<% 
+
+				<%  # ボタンによってURLの種類を指定
 					if session[:site] == 'Google'
 						site_url = 'https://www.google.com/search?q='
 
@@ -51,6 +66,7 @@
 					elsif session[:site] == 'Twitter'
 						site_url = 'https://twitter.com/search?q='
 						# https://twitter.com/search?q=単語&src=typd  &src=typd って何？ある方が良いかを検証
+						# site_url = 'https://twitter.com/hashtag/' # ハッシュタグで検索する場合
 					end 
 				%>
 				<td class='col-8 col-lg-9 word'>
