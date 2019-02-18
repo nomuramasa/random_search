@@ -119,8 +119,16 @@ function getUniqueStr(myStrong){
  if (myStrong) strong = myStrong;
  return new Date().getTime().toString(16)  + Math.floor(strong*Math.random()).toString(16)
 }
-      
+
 // ページ読み込み完了時 
 window.onload = function() {
     viewStorage();
 }
+
+//= require rails-ujs
+//= require activestorage
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require_tree .
