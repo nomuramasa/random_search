@@ -1,24 +1,8 @@
-# README
+ボタンを押すと、ランダムなワードがリストに追加されていく、偶然と出会えるWebサービスです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+誰にでも手軽に使ってほしいので、ログインなしでもすぐに使い始めることが出来る仕組みにしています。
+未ログイン時には、ブラウザのローカルストレージにデータを保存します。
 
-Things you may want to cover:
+リストの単語をクリックすると、Google検索にリンクします。
+ボタンでYoutubeやTwitterへのリンクに切り替えることも可能です。
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
