@@ -102,7 +102,7 @@ class TopController < ApplicationController
 
 
   #### リンク先サイトを変える
-  def change_go
+  def change_site
   	session[:site] = params[:site] # パラメータをそのままセッションに代入
   	redirect_to('/')
   end

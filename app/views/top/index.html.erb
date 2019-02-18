@@ -11,37 +11,14 @@
 		<tr class='row'>
 			<th class='col-2 col-lg-1'></th>
 			<th class='col-8 col-lg-9'>
+				
 				<!-- TwitterやYoutubeのリンクをsessionの値によって場合分け -->
-
-				<!-- 今のセッション -->
-				<%= session[:site] + 'で検索　' %>
-	
+ 				<% if session[:site] == nil then session[:site] = 'Google' end %> <!-- 初期値 -->
+				<a href='Google/change_site' class='btn btn-dark btn-sm <% if session[:site] != "Google" %>mute<% end %>'>Google</a>	
+				<a href='Youtube/change_site' class='btn btn-danger btn-sm <% if session[:site] != "Youtube" %>mute<% end %>'>Youtube</a>	
+				<a href='Twitter/change_site' class='btn btn-primary btn-sm <% if session[:site] != "Twitter" %>mute<% end %>'>Twitter</a>	
 				<!-- パラメータにはサイト名を指定（params[:site]/change_go） -->
-
-				<a href='Google/change_go'
-				<% if session[:site] != 'Google' %>  
-					<%= 'class=mute' %> 
-				<% end %>
-				>
-					<img src='/google.png' width='20px' class='rounded-circle'>
-				</a>			
-
-				<a href='Youtube/change_go'
-				<% if session[:site] != 'Youtube' %>  
-					<%= 'class=mute' %> 
-				<% end %>
-				>
-					<img src='/youtube.png' width='20px' class=''>
-				</a>
-
-				<a href='Twitter/change_go'
-				<% if session[:site] != 'Twitter' %>  
-					<%= 'class=mute' %> 
-				<% end %>
-				>
-					<img src='/twitter.png' width='20px' class=''>
-				</a>
-
+	
 			</th>
 			<th class='col-1 col-lg-1'><span class='d-none d-md-block'>目印</span></th>
 			<th class='col-1 col-lg-1'><span class='d-none d-md-block'>削除</span></th>
@@ -107,7 +84,7 @@
 		</script>
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<!-- application.jsを読み込む（/app/assets/javascript/application.js） -->
+		<!-- storage.jsを読み込む（/app/assets/javascript/application.js） -->
 		<%= javascript_include_tag 'storage', 'data-turbolinks-track': 'reload' %>
 		
 	<% end %>

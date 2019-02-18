@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/:id/delete' => 'top#delete'
 
   # リンク先サイトの変更
-  get '/:site/change_go' => 'top#change_go'
+  get '/:site/change_site' => 'top#change_site'
 
 
 
