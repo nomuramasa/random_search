@@ -16,8 +16,8 @@
 '>
 	<thead class='thead-light'>
 		<tr class='row'>
-			<th class='col-2 col-lg-1'></th>
-			<th class='col-8 col-lg-9'>
+			<th class='d-none d-sm-block col-2 col-lg-1'></th>
+			<th class='col-10 col-sm-8 col-lg-9 '>
 
 
 				<!-- Google・Twitter・Youtubeのリンクを、sessionの値によって場合分け -->
@@ -56,7 +56,7 @@
 
 				<!-- New -->
 				<% if word.visit==0 then deco='NEW' else deco='' end %> <!-- 訪問チェック -->
-				<td class='col-2 col-lg-1'>
+				<td class='d-none d-sm-block col-sm-2 col-lg-1'>
           <div class='new'><%= deco %></div>
 				</td>
 
@@ -76,7 +76,7 @@
 						# site_url = 'https://twitter.com/hashtag/' # ハッシュタグで検索する場合
 					end 
 				%>
-				<td class='col-8 col-lg-9 word'>
+				<td class='col-10 col-sm-8 col-lg-9 word'>
           <a href='<%= "/#{word.id}/visit" %>' onclick='window.open("<%= site_url + word.content %>")' class='d-block'> <!-- visitアクション起こすと同時に、jsでGoogleブラウザ開く -->
 	        	<%= word.content %> 
 	        	<!-- <%= user.id %>  その単語のユーザーID--> 

@@ -21,7 +21,7 @@ var viewStorage = function(){
 
     //// New
     var td1 = document.createElement('td');
-    td1.classList.add('col-2', 'col-lg-1');
+    td1.classList.add('d-none', 'd-sm-block', 'col-2', 'col-lg-1');
     tr.appendChild(td1);
 
     if(obj.visit == 0){var deco='NEW'} else {var deco=''}
@@ -30,7 +30,7 @@ var viewStorage = function(){
 
     //// 検索ワード
     var td2 = document.createElement('td'); 
-    td2.classList.add('col-8', 'col-lg-9', 'word');
+    td2.classList.add('col-10', 'col-sm-8', 'col-lg-9', 'word');
     tr.appendChild(td2);
 
     // サイトURLをセット（Google・Youtube・Twitter）
