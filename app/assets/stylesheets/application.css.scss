@@ -65,6 +65,26 @@ nav a:hover{
 }
 
 
+// テーブルの下線の色
+.table.red > tbody > tr > td{ // Youtue
+    border-top: 1px solid #fbb; // 赤
+}
+.table.blue > tbody > tr > td{ // Twitter
+    border-top: 1px solid #adf; // 青
+}
+
+// 単語ホバー
+.table .word a:hover{ // Google
+	color: #777; // グレー
+}
+.table.red .word a:hover{ // Youtue
+	color: #f77; // 赤
+}
+.table.blue .word a:hover{ // Twitter
+	color: #0af; // 青
+}
+
+
 // テーブル行の高さ
 tr{
 	//min-height: 40px;
@@ -73,19 +93,9 @@ tr{
 // 検索ワード
 .word a{
 	color: #000;
-	//min-height:40px;
-	//line-height:40px;
-  //margin:-4px;
-  //margin-left:5%;
-  //padding-left:15px;
-	//background:#fdd;
 	font-weight:bold;
 }
 
-// ホバー時
-.word a:hover{
-	color: #0af;
-}
 
 // 訪問済みかどうかで変化を与える
 .word a:link{

@@ -6,7 +6,14 @@
 	<a href='<%= link %>' id='get_word' class='btn btn-warning text-center'>新しいワードを追加 ＋</a>
 </div>
 
-<table class='table table-sm'>
+<!-- テーブル 選択されてるサイトによって、ホバー時の文字や、下線の色を変える -->
+<table class='table table-sm
+	<% if session[:site]=='Twitter' %>
+		blue
+	<% elsif session[:site]=='Youtube' %>
+		red
+	<% end %>
+'>
 	<thead class='thead-light'>
 		<tr class='row'>
 			<th class='col-2 col-lg-1'></th>
