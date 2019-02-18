@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   # 削除
   get '/:id/delete' => 'top#delete'
 
+  # リンク先サイトの変更
+  get '/:site/change_go' => 'top#change_go'
+
 
 
   ####### ユーザー

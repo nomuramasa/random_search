@@ -1,5 +1,18 @@
 @import 'bootstrap'; 
 
+// リンク
+a{
+	color: #000
+}
+a, a:hover{
+	text-decoration:none;
+}
+
+// サイト切り替え
+.mute{
+	opacity:0.3
+}
+
 // 新ワードボタン
 #get_word.btn-warning {
 	color: white;
@@ -9,11 +22,6 @@
 #get_word.btn-warning:hover {
   background-color: #dd6e00;
   border-color: #dd6e00;
-}
-
-// リンク
-a, a:hover{
-	text-decoration:none;
 }
 
 // ナビゲーションの色
