@@ -19,7 +19,7 @@ var viewStorage = function(){
     tb.appendChild(tr);
 
 
-    // New
+    //// New
     var td1 = document.createElement('td');
     td1.classList.add('col-2', 'col-lg-1');
     tr.appendChild(td1);
@@ -28,15 +28,24 @@ var viewStorage = function(){
     td1.innerHTML = '<div class="new">' + deco; + '</div>'
 
 
-    // 検索ワード
+    //// 検索ワード
     var td2 = document.createElement('td'); 
     td2.classList.add('col-8', 'col-lg-9', 'word');
     tr.appendChild(td2);
 
-    td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="https://www.google.com/search?q='+ obj.name + '" target="_blank" class="d-block">' + obj.name + '</a>'; 
+    // サイトURLをセット（Google・Youtube・Twitter）
+    if(session == 'Google'){
+      site_url = 'https://www.google.com/search?q=' 
+    }else if(session == 'Youtube'){
+      site_url = 'https://www.youtube.com/results?search_query=' 
+    }else if(session == 'Twitter'){
+      site_url = 'https://twitter.com/search?q=' 
+    }
+
+    td2.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'visit\')" href="'+ site_url +''+ obj.name + '" target="_blank" class="d-block">' + obj.name + '</a>'; 
 
 
-    // スター
+    //// スター
     var td3 = document.createElement('td'); 
     td3.classList.add('col-1', 'col-lg-1');
     tr.appendChild(td3);
@@ -45,7 +54,7 @@ var viewStorage = function(){
     td3.innerHTML = '<a onclick="changeStorage(\'' + id + '\',\'star\')" class=" '+ color +'"><i class="material-icons">star</i></a>';
 
 
-    // ごみ箱
+    //// ごみ箱
     var td4 = document.createElement('td'); 
     td4.classList.add('col-1', 'col-lg-1');
     tr.appendChild(td4);
