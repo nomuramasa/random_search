@@ -8,10 +8,16 @@ a, a:hover{
 	text-decoration:none;
 }
 
-// サイト切り替え
-.mute{
-	opacity:0.2
+
+// ナビゲーションの色
+nav a{
+	color:#fff;
 }
+nav a:hover{
+	color:#aaa;
+}
+
+
 
 // 新ワードボタン
 #get_word.btn-warning {
@@ -24,18 +30,61 @@ a, a:hover{
   border-color: #dd6e00;
 }
 
-// ナビゲーションの色
-nav a{
-	color:#fff;
+
+// テーブルの下線の色
+.table > tbody > tr > td{ // Google
+    border-top: 2px solid #dee2e6 // 黒
 }
-nav a:hover{
-	color:#aaa;
+.table.red > tbody > tr > td{ // Youtue
+    border-top: 2px solid #fbb; // 赤
 }
+.table.blue > tbody > tr > td{ // Twitter
+    border-top: 2px solid #adf; // 青
+}
+
+// テーブル行の高さ
+tr{
+	//min-height: 40px;
+}
+
+
+// サイトタグ切り替え
+.mute{
+	opacity:0.2
+}
+
 
 // Newの色
 .new{
 	color: #fbb
 }
+
+
+// 検索ワード
+.word a{
+	color: #000;
+	font-weight:bold;
+}
+
+// 単語ホバー
+.table .word a:hover{ // Google
+	color: #777; // グレー
+}
+.table.red .word a:hover{ // Youtue
+	color: #f77; // 赤
+}
+.table.blue .word a:hover{ // Twitter
+	color: #0af; // 青
+}
+
+
+// 訪問済みかどうかで変化を与える
+.word a:link{
+} 
+.word a:visited {
+}
+
+
 
 // 星の色
 .star{
@@ -65,42 +114,10 @@ nav a:hover{
 }
 
 
-// テーブルの下線の色
-.table.red > tbody > tr > td{ // Youtue
-    border-top: 1px solid #fbb; // 赤
+// rowの横幅12分の1.5
+@media screen and (max-width:575px) { // 小スマホ限定
+	.col-1_half {
+	    flex: 0 0 12.5%;
+	    max-width: 12.5%;
+	}
 }
-.table.blue > tbody > tr > td{ // Twitter
-    border-top: 1px solid #adf; // 青
-}
-
-// 単語ホバー
-.table .word a:hover{ // Google
-	color: #777; // グレー
-}
-.table.red .word a:hover{ // Youtue
-	color: #f77; // 赤
-}
-.table.blue .word a:hover{ // Twitter
-	color: #0af; // 青
-}
-
-
-// テーブル行の高さ
-tr{
-	//min-height: 40px;
-}
-
-// 検索ワード
-.word a{
-	color: #000;
-	font-weight:bold;
-}
-
-
-// 訪問済みかどうかで変化を与える
-.word a:link{
-} 
-.word a:visited {
-}
-
-

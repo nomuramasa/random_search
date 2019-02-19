@@ -30,7 +30,7 @@ var viewStorage = function(){
 
     //// 検索ワード
     var td2 = document.createElement('td'); 
-    td2.classList.add('col-10', 'col-sm-8', 'col-lg-9', 'word');
+    td2.classList.add('col-9', 'col-sm-8', 'col-lg-9', 'word');
     tr.appendChild(td2);
 
     // サイトURLをセット（Google・Youtube・Twitter）
@@ -47,7 +47,7 @@ var viewStorage = function(){
 
     //// スター
     var td3 = document.createElement('td'); 
-    td3.classList.add('col-1', 'col-lg-1');
+    td3.classList.add('col-1_half', 'col-sm-1');
     tr.appendChild(td3);
 
     if(obj.star == 0){var color='nostar'} else {var color='star'}
@@ -56,7 +56,7 @@ var viewStorage = function(){
 
     //// ごみ箱
     var td4 = document.createElement('td'); 
-    td4.classList.add('col-1', 'col-lg-1');
+    td4.classList.add('col-1_half', 'col-sm-1');
     tr.appendChild(td4);
 
     td4.innerHTML = '<a onclick="removeStorage(\'' + id + '\')" class="trash"><i class="material-icons">delete</i></a>';

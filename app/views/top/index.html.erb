@@ -7,7 +7,7 @@
 </div>
 
 <!-- テーブル 選択されてるサイトによって、ホバー時の文字や、下線の色を変える -->
-<table class='table table-sm
+<table class='table
 	<% if session[:site]=='Twitter' %>
 		blue
 	<% elsif session[:site]=='Youtube' %>
@@ -17,7 +17,7 @@
 	<thead class='thead-light'>
 		<tr class='row'>
 			<th class='d-none d-sm-block col-2 col-lg-1'></th>
-			<th class='col-10 col-sm-8 col-lg-9 '>
+			<th class='col-10 col-sm-8 col-lg-9'>
 
 
 				<!-- Google・Twitter・Youtubeのリンクを、sessionの値によって場合分け -->
@@ -30,7 +30,7 @@
 					<a 
 						href='<%= site[0][:name] %>/change_site'
 						class='
-							btn btn-<%= site[0][:color] %> btn-sm 
+							btn btn-<%= site[0][:color] %> btn-sm
 							<% if session[:site] != "#{site[0][:name]}" %>
 								mute
 							<% end %>
@@ -76,7 +76,7 @@
 						# site_url = 'https://twitter.com/hashtag/' # ハッシュタグで検索する場合
 					end 
 				%>
-				<td class='col-10 col-sm-8 col-lg-9 word'>
+				<td class='col-9 col-sm-8 col-lg-9 word'>
           <a href='<%= "/#{word.id}/visit" %>' onclick='window.open("<%= site_url + word.content %>")' class='d-block'> <!-- visitアクション起こすと同時に、jsでGoogleブラウザ開く -->
 	        	<%= word.content %> 
 	        	<!-- <%= user.id %>  その単語のユーザーID--> 
@@ -85,12 +85,12 @@
 
 			  <!-- スター -->  
 				<% if word.star==0 then color='nostar' else color='star' end %> <!-- 色の為のクラス -->
-				<td class='col-1 col-lg-1'>
+				<td class='col-1_half col-sm-1'>
           <a href='<%= "/#{word.id}/update" %>' class='<%= color %>'><i class='material-icons'>star</i></a>
 				</td>
 
 			  <!-- ごみ箱 -->  
-				<td class='col-1 col-lg-1'>
+				<td class='col-1_half col-sm-1'>
           <a href='<%= "/#{word.id}/delete" %>'><i class='material-icons trash'>delete</i></a>
 				</td>
 
