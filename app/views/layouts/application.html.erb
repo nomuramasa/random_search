@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>新しい検索ワードと出会えるページ</title>
+    <title>ランダム単語コレクション</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name='viewport' content='width=device-width'> <!-- スマホの為のビューポート -->
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'> <!-- マテリアルアイコン -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> <!-- Font Awesome -->
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'> <!-- Bootstrap -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,7 +17,7 @@
     <!-- ナビ -->
     <nav class='navbar navbar-expand-sm bg-dark'>
       <div class='container'>
-        <h3><a href='/'>新しい単語と出会う</a></h3>
+        <h5><a href='/'>ランダム単語コレクション</a></h5>
 
         
         <!-- リンク -->

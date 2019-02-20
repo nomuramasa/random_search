@@ -35,7 +35,7 @@ nav a:hover{
 // はてなマークをランダムに配置
 @for $i from 1 through 30 {
   .hatena#{$i} {
-		color: #ee6e00;
+		color: #ff6e00;
 		position: absolute;
 
 		font-size: 1 + random(10)*0.1 + em;
