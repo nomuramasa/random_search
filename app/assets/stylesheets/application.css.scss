@@ -91,6 +91,36 @@ nav a:hover{
 
 
 
+// テーブルのヘッダー色
+.table > thead tr{ // Google
+    background-color: #e9ecef // 黒
+}
+.table.red > thead tr{ // Youtue
+    background-color: #fee; // 赤
+}
+.table.blue > thead tr{ // Twitter
+    background-color: #def; // 青
+}
+
+
+// th下線の色
+.table.red thead th { // Youtue
+    border-bottom: 2px solid #fbb;
+}
+
+.table.blue thead th { // Twitter
+    border-bottom: 2px solid #adf;
+}
+
+// thとtdの上線の色
+.table.red th, .table td { // Youtue
+    border-top: 1px solid #fbb;
+}
+.table.blue th, .table td { // Twitter
+    border-top: 1px solid #adf;
+}
+
+
 // テーブルの下線の色
 .table > tbody > tr > td{ // Google
     border-top: 2px solid #dee2e6 // 黒
