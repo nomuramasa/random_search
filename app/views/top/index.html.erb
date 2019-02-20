@@ -2,10 +2,13 @@
 <% if @current_user then link = '/add' else link = './' end %>
 
 <!-- 最初の説明文 -->
-<p class='text-sm-center'>
-	ボタンを押すたびに、ランダムな単語がリストに追加されます。<br>
-	ブログのネタ探し、暇つぶし、作品のアイデア出しなどにご利用ください！
-</p>
+<div id='only_once' class='d-none text-sm-center m-1 m-sm-0 row'>
+	<p class='border rounded rounded-lg p-3 mx-auto col-lg-7'>
+		ボタンを押すたびに、ランダムな単語がリストに追加されます。
+		<br class='d-none d-md-block'>
+		ブログのネタ探し、暇つぶし、作品のアイデア出しなどにご利用ください！
+	</p>
+</div>
 
 <!-- ワード追加のボタン -->
 <div class='text-center mb-4'>
