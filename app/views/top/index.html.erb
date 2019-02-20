@@ -1,9 +1,21 @@
 <!-- ボタンのリンク先 rubyとjsで分ける -->
 <% if @current_user then link = '/add' else link = './' end %>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
 <!-- ワード追加のボタン -->
 <div class='text-center mb-4'>
-	<a href='<%= link %>' id='get_word' class='btn btn-warning text-center'>新しいワードを追加 ＋</a>
+		<i class="fas fa-question hatena-3" style='transform: rotate(-40deg); opacity: 0.1; font-size: 1.7em; color: #ee6e00'></i>
+		<i class="fas fa-question hatena-2" style='transform: rotate(-25deg); opacity: 0.2; font-size: 1.5em; color: #ee6e00'></i>
+		<i class="fas fa-question hatena-1" style='transform: rotate(-20deg); opacity: 0.3; font-size: 1.2em; color: #ee6e00'></i>
+		<a href='<%= link %>' id='get_word' class='btn btn-warning text-center'>
+			ランダムワード ＋
+		</a>
+		<i class="fas fa-question hatena1" style='transform: rotate(10deg); opacity: 0.3; font-size: 1.2em; color: #ee6e00'></i>
+		<i class="fas fa-question hatena2" style='transform: rotate(15deg); opacity: 0.2; font-size: 1.5em; color: #ee6e00'></i>
+		<i class="fas fa-question hatena3" style='transform: rotate(30deg); opacity: 0.1; font-size: 1.7em; color: #ee6e00'></i>
+		<!-- <i class="material-icons" style='transform: rotate(90deg); font-size: 16px'>library_add</i> -->
+			
+		
 </div>
 
 <!-- テーブル 選択されてるサイトによって、ホバー時の文字や、下線の色を変える -->
