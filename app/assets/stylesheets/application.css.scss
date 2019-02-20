@@ -20,6 +20,7 @@ nav a:hover{
 
 
 // 新ワードボタン
+
 #get_word.btn-warning {
 	color: white;
   background-color: #ee6e00;
@@ -28,6 +29,21 @@ nav a:hover{
 #get_word.btn-warning:hover {
   background-color: #dd6e00;
   border-color: #dd6e00;
+}
+
+
+// はてなマークをランダムに配置
+@for $i from 1 through 10 {
+  .hatena#{$i} {
+		color: #ee6e00;
+		position: absolute;
+		
+		font-size: 1.2em;
+		transform: rotate(-10deg);
+		opacity: 0.3;
+		left:20%;
+		top:10%;
+	} 
 }
 
 
