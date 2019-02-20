@@ -37,12 +37,12 @@ nav a:hover{
   .hatena#{$i} {
 		color: #ee6e00;
 		position: absolute;
-		
-		font-size: 1.2em;
-		transform: rotate(-10deg);
-		opacity: 0.3;
-		left:20%;
-		top:10%;
+
+		font-size: 1 + random(10)*0.1 + em;
+		transform: rotate(- random(90) + 45deg); // 角度は -45 〜 90 度
+		opacity: random(5)*0.1; // 透明度は0.1〜0.5
+		left: random(100)#{'%'};
+		top:random(100)#{'%'};
 	} 
 }
 
