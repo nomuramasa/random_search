@@ -33,18 +33,25 @@ nav a:hover{
 
 
 // はてなマークをランダムに配置
-@for $i from 1 through 10 {
+@for $i from 1 through 40 {
   .hatena#{$i} {
 		color: #ee6e00;
 		position: absolute;
 
 		font-size: 1 + random(10)*0.1 + em;
-		transform: rotate(- random(90) + 45deg); // 角度は -45 〜 90 度
 		opacity: random(5)*0.1; // 透明度は0.1〜0.5
-		left: random(100)#{'%'};
-		top:random(100)#{'%'};
+		top: random(200)-100#{'%'}; // 縦の位置　spanの上下ズレに合わせ、上に50%ズラす
+
+		@if $i <= 20{ // 左側
+			transform: rotate(random(45) + deg); // 角度は -45〜0度
+			right: random(50)#{'%'};  // 横の位置
+		}@else{ // 右側
+			transform: rotate(- random(45) + deg); // 角度は 0〜45度
+			left: random(50)#{'%'};  // 横の位置
+		}
 	} 
 }
+
 
 
 // テーブルの下線の色

@@ -5,10 +5,13 @@
 <!-- ワード追加のボタン -->
 <div class='text-center mb-4'>
 	<span class='px-5 position-relative'>
-		<% for count in 1..10 do %>
+
+		<!-- はてなマークの数だけ -->
+		<% for count in 1..40 do %> 
 			<i class='fas fa-question hatena<%= count %>'></i>
 		<% end %>
-		<a href='<%= link %>' id='get_word' class='btn btn-warning text-center position-relative' style='opacity: 0.1'>ランダムワード ＋</a>			
+
+		<a href='<%= link %>' id='get_word' class='btn btn-warning text-center position-relative' style='opacity: 1'>ランダムワード ＋</a>			
 	</span>
 </div>
 
