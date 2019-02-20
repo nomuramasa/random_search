@@ -45,10 +45,11 @@
 							<% end %>
 						'
 					>
-					<%= site[0][:name] %></a>	
-					<% if session[:site] == "#{site[0][:name]}" %>
-						で検索 &nbsp;&nbsp;&nbsp;
-					<% end %>
+						<%= site[0][:name] %>  <!-- Google・Youtube・Twitterのどれか -->
+						<% if session[:site] == "#{site[0][:name]}" %> <!-- 選択中のサイトには「で検索」を付ける -->
+							で検索
+						<% end %>
+					</a>	
 				<% end %>
 
 			</th>
