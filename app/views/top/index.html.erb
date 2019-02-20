@@ -1,36 +1,8 @@
 <!-- ボタンのリンク先 rubyとjsで分ける -->
 <% if @current_user then link = '/add' else link = './' end %>
-<style>
-.balloon {
-  /*position: relative;*/
-  border: solid 3px #777;
-  /*box-sizing: border-box;*/
-}
 
-.balloon:before {
-  content: "";
-  position: absolute;
-  bottom: -24px;
-  left: 50%;
-  margin-left: -15px;
-  border: 12px solid transparent;
-  border-top: 12px solid #FFF;
-  z-index: 2;
-}
-
-.balloon:after {
-  content: "";
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  margin-left: -17px;
-  border: 14px solid transparent;
-  border-top: 14px solid #777;
-  z-index: 1;
-}
-</style>
 <!-- 最初の説明文 -->
-<div id='only_once' class='text-sm-center my-4 balloon rounded rounded-lg p-3 mx-auto col-lg-7'>
+<div id='only_once' class='d-none text-sm-center my-4 balloon rounded rounded-lg p-3 mx-auto col-lg-7'>
 	<p class='mb-0 text-sm-center'>
 		ボタンを押すたびに、ランダムな単語がリストに追加されます。
 		<br class='d-none d-md-block'>
@@ -38,8 +10,8 @@
 	</p>
 </div>
 
-<!-- ワード追加のボタン -->
-<div class='text-center mb-4'>
+<!-- ランダムワード生成ボタン -->
+<div class='text-center mb-4 btn-div'>
 	<span class='px-5 position-relative'>
 
 		<!-- はてなマークの数だけ -->

@@ -18,6 +18,42 @@ nav a:hover{
 }
 
 
+// 説明文の吹き出し
+.balloon {
+  /*position: relative;*/
+  border: solid 3px #777;
+  /*box-sizing: border-box;*/
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  margin-left: -15px;
+  border: 12px solid transparent;
+  border-top: 12px solid #FFF;
+  z-index: 2;
+}
+
+.balloon:after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  margin-left: -17px;
+  border: 14px solid transparent;
+  border-top: 14px solid #777;
+  z-index: 1;
+}
+
+
+// 新ワードボタン周辺
+
+.btn-div{
+	margin-bottom: 2.2rem !important;
+	margin-top: 2.2rem !important;
+}
 
 // 新ワードボタン
 
@@ -40,15 +76,15 @@ nav a:hover{
 
 		font-size: 1 + random(10)*0.1 + em;
 		opacity: random(5)*0.1; // 透明度は0.1〜0.5
-		top: random(200)-100#{'%'}; // 縦の位置　spanの上下ズレに合わせ、上に50%ズラす
+		top: random(280)-180#{'%'}; // 縦の位置　上下均等にする為に、差は100にする
 
 		@if $i <= 15{ // 左側
 			transform: rotate(- random(35) + -10deg); // 角度は -45〜0度
-			left: random(30)#{'%'};  // 横の位置
+			left: random(40)#{'%'};  // 横の位置　ちょっと外よりに
 
 		}@else{ // 右側
 			transform: rotate(random(35) + 10deg); // 角度は 0〜45度
-			right: random(30)#{'%'};  // 横の位置
+			right: random(40)#{'%'};  // 横の位置　ちょっと外よりに
 		}
 	} 
 }
