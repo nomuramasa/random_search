@@ -11,7 +11,7 @@
 			<i class='fas fa-question hatena<%= count %>'></i>
 		<% end %>
 
-		<a href='<%= link %>' id='get_word' class='btn btn-warning text-center position-relative' style='opacity: 1'>ランダムワード ＋</a>			
+		<a href='<%= link %>' id='get_word' class='btn btn-warning text-center position-relative' style='opacity: 1'>ランダムワード生成 ＋</a>			
 	</span>
 </div>
 
@@ -35,7 +35,7 @@
 
  				<!-- controllerでセットしたサイト名と色を取り出していく -->
  				<% for site in @sites %>
-					<!-- パラメータにはサイト名を指定（Google/change_site） -->
+					<!-- パラメータにはサイト名を指定（Google/change_site）。選択されてない場合はミュート -->
 					<a 
 						href='<%= site[0][:name] %>/change_site'
 						class='
@@ -46,9 +46,11 @@
 						'
 					>
 					<%= site[0][:name] %></a>	
+					<% if session[:site] == "#{site[0][:name]}" %>
+						で検索 &nbsp;&nbsp;&nbsp;
+					<% end %>
 				<% end %>
 
-	
 			</th>
 			<th class='col-1 col-lg-1'><span class='d-none d-md-block'>目印</span></th>
 			<th class='col-1 col-lg-1'><span class='d-none d-md-block'>削除</span></th>
