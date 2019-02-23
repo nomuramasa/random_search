@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   get '/signup' => 'user#new'
   post '/user/create' => 'user#create'
 
+  #ストレージからDBへ移行
+  get '/move_data' => 'user#move_data'
+
   # 編集
   get '/user/:id/edit' => 'user#edit'
   post '/user/:id/update' => 'user#update'
@@ -51,6 +54,8 @@ Rails.application.routes.draw do
 
   # ログアウト
   get '/logout' => 'user#logout'
+
+
 
 
 

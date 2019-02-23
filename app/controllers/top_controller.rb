@@ -8,6 +8,7 @@ class TopController < ApplicationController
 
 	#### 検索ワード一覧ページ表示
   def index
+  	
 		# サイト切り替えのための、名と色をセット
 		@sites = [
 			[name: 'Google', color: 'dark'],

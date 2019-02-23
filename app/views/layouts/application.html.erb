@@ -65,6 +65,15 @@
       </div>
     <% end %>
 
+
+    <!-- 新規登録してすぐ -->
+    <% if cookies[:new_registration] == '1' %>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> <!-- Ajax -->
+      <%= javascript_include_tag 'move_storage_to_db' %> <!-- データ移行のjsを読み込む -->
+      <% cookies.delete :new_registration # cookie消しておく %> 
+    <% end %>
+
+
     <!-- それぞれのページ -->
     <div class='container mt-3'>
       <%= yield %>
