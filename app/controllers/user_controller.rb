@@ -47,7 +47,7 @@ class UserController < ApplicationController
   end
 
 
-  # ローカルストレージからDBへ移行（新規登録時のみ）
+  # ブラウザのストレージからRailsのDBへ引き継ぎ（新規登録時のみ）
   def move_data
 
     @word = Word.new( # データベースに保存
