@@ -33,11 +33,12 @@ jQuery(function($){
 		        complete: function(){}
 		    });
 
+			  // localStorage.removeItem(id) // ローカルストレージの、そのデータは消しておく
 
 			} //if 
 		// })(forCount); //function(i)
 
   } //for 
 
-  // localStorage.clear() // 最後にストレージデータは消しておく
+
 });
