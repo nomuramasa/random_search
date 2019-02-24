@@ -109,12 +109,12 @@
 
 			  <!-- ごみ箱 -->  
 				<td class='col-1_half col-sm-1'>
-          <a href='<%= "/#{word.id}/delete" %>' class='delete' data-remote='true' data-method='post'><i class='material-icons trash'>delete</i></a>
+          <a href='<%= "/#{word.id}/delete" %>'><i class='material-icons trash'>delete</i></a>
+         <!-- aに class='delete' data-remote='true' -->
 				</td>
 
 			</tr>
 		<% end %> <!-- for文終わり -->
-
 
 
 	<% else %> <!-- ログアウト中は、javascriptのストレージ関係の関数を読み込む -->
@@ -132,7 +132,3 @@
 
   </tbody>
 </table>
-
-
-<!-- top.jsを読み込む -->
-<%= javascript_include_tag 'top.js' %>

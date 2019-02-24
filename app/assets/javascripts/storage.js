@@ -164,4 +164,3 @@ function getUniqueStr(myStrong){
 window.onload = function() {
   viewStorage();
 }
-
