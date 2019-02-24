@@ -75,6 +75,10 @@ $('#get_word').on('click', function getWord() { // oneだから1回だけ有効
       dataType:"html", 
       // data : {}, // 今回は、受け取るだけでこちらからは何も送らない
 
+      beforeSend: function(){ // 通信中
+        document.getElementById('get_word').innerHTML = '<i class="fa fa-spinner fa-spin"></i>　ワード 生成中　<i class="fa fa-spinner fa-spin"></i>' // loadingマーク
+      },
+
       error : function(XMLHttpRequest, textStatus, errorThrown) { // エラーの場合
         console.log("ajax通信に失敗しました");
         // console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -93,10 +97,10 @@ $('#get_word').on('click', function getWord() { // oneだから1回だけ有効
         var _visit = 0; // 始めは訪れてない
         saveStorage(Key, _name, _star, _visit); 
 
-      }//あと、通信中はボタンを無効にしたい
+      }
 
-  // }).done(function(data) {
-    // その後の処理
+  }).done(function(data) { // その後の処理
+    document.getElementById('get_word').innerHTML = 'ランダムワード生成 ＋' // ボタンの文字を元に戻しておく
   });
 
 
