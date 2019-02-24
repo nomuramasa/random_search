@@ -66,46 +66,44 @@ var viewStorage = function(){
 
 
 // 新しいワード追加ボタンを押されたとき
-// $('#get_word').on('click', function getWord() { // oneだから1回だけ有効
 var makeWord = function(){
 
   // リクエストを送信
   $.ajax({
-      url : '/add', // ランダムワード生成してrenderしてくれるcontrollerを叩く
-      type : 'GET',
-      dataType:'html', 
-      // data : {}, // 今回は、受け取るだけでこちらからは何も送らない
+    url : '/add', // ランダムワード生成してrenderしてくれるcontrollerを叩く
+    type : 'GET',
+    dataType:'html', 
+    // data : {}, // 今回は、受け取るだけでこちらからは何も送らない
 
-      beforeSend: function(){ // 通信中
-        document.getElementById('make_word').innerHTML = '<i class="fa fa-spinner fa-spin"></i>　ワード 生成中　<i class="fa fa-spinner fa-spin"></i>' // loadingマーク
-      },
+    beforeSend: function(){ // 通信中
+      document.getElementById('make_word').innerHTML = '<i class="fa fa-spinner fa-spin"></i>　ワード 生成中　<i class="fa fa-spinner fa-spin"></i>' // loadingマーク
+    },
 
-      error : function(XMLHttpRequest, textStatus, errorThrown) { // エラーの場合
-        console.log('ajax通信に失敗しました');
-        // console.log('XMLHttpRequest : ' + XMLHttpRequest.status);
-        // console.log('textStatus     : ' + textStatus);
-        // console.log('errorThrown    : ' + errorThrown.message);          
-      },
-      success : function(response) { // 成功の場合
-        console.log('ajax通信に成功しました');
-        console.log(response);
+    error : function(XMLHttpRequest, textStatus, errorThrown) { // エラーの場合
+      console.log('ajax通信に失敗しました');
+      // console.log('XMLHttpRequest : ' + XMLHttpRequest.status);
+      // console.log('textStatus     : ' + textStatus);
+      // console.log('errorThrown    : ' + errorThrown.message);          
+    },
+    success : function(response) { // 成功の場合
+      console.log('ajax通信に成功しました');
+      console.log(response);
 
-        // ストレージに保存する値をセット
-        uuid = getUniqueStr(); // ユニークなIDを取得　
-        var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
-        var _name = response; // topのviewでセットしたワード
-        var _star = 0; // 始めはスターなし
-        var _visit = 0; // 始めは訪れてない
-        saveStorage(Key, _name, _star, _visit); 
+      // ストレージに保存する値をセット
+      uuid = getUniqueStr(); // ユニークなIDを取得　
+      var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
+      var _name = response; // topのviewでセットしたワード
+      var _star = 0; // 始めはスターなし
+      var _visit = 0; // 始めは訪れてない
+      saveStorage(Key, _name, _star, _visit); 
 
-      }
+    }
 
   }).done(function(data) { // その後の処理
     document.getElementById('make_word').innerHTML = 'ランダムワード生成 ＋' // ボタンの文字を元に戻しておく
   });
 
 }
-// });
 
 
 // ストレージに追加
@@ -142,17 +140,17 @@ var changeStorage = function(id, purpose){
 
 // 特定のワードを削除
 var removeStorage = function(id){
-    //var id = document.getElementById("id").value;
-    localStorage.removeItem(id);
-    id = '';
-    viewStorage();
-    document.getElementById('only_once').classList.remove('d-block'); //　最初の吹き出しを消す
+  //var id = document.getElementById("id").value;
+  localStorage.removeItem(id);
+  id = '';
+  viewStorage();
+  document.getElementById('only_once').classList.remove('d-block'); //　最初の吹き出しを消す
 };
 
 // 全て削除
 var clearStorage = function(){
-    localStorage.clear();
-    viewStorage();
+  localStorage.clear();
+  viewStorage();
 };
 
 // ユニークなIDを生成
