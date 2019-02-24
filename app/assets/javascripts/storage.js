@@ -104,7 +104,6 @@ var makeWord = function(){
     document.getElementById('make_word').innerHTML = 'ランダムワード生成 ＋' // ボタンの文字を元に戻しておく
   });
 
-
 }
 // });
 
@@ -118,6 +117,7 @@ var saveStorage = function(Key,name,star,visit){
   }
   Key = ''; Value = []; // 初期化  これでif(Value)に引っ掛かるのか心配
   viewStorage();
+  document.getElementById('only_once').classList.remove('d-block'); //　最初の吹き出しを消す
 }
 
 
@@ -146,6 +146,7 @@ var removeStorage = function(id){
     localStorage.removeItem(id);
     id = '';
     viewStorage();
+    document.getElementById('only_once').classList.remove('d-block'); //　最初の吹き出しを消す
 };
 
 // 全て削除
@@ -163,7 +164,7 @@ function getUniqueStr(myStrong){
 
 // ページ読み込み完了時 
 window.onload = function() {
-    viewStorage();
+  viewStorage();
 }
 
 //= require rails-ujs

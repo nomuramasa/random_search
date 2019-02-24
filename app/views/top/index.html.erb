@@ -1,5 +1,5 @@
 <!-- ボタンのリンク先 rubyとjsで分ける -->
-<% if @current_user then attribute='href=/add' else attribute='onclick=makeWord()' end %>
+<% if @current_user then attribute='href=/add data-remote=true' else attribute='onclick=makeWord()' end %>
 
 <!-- 最初の説明文 -->
 <div id='only_once' class='d-none text-sm-center my-4 balloon rounded rounded-lg p-3 mx-auto col-lg-7'>
@@ -118,25 +118,22 @@
 
 
 
-	<% else %> <!-- ログアウト中は、javascriptの関数を読み込む -->
+	<% else %> <!-- ログアウト中は、javascriptのストレージ関係の関数を読み込む -->
 
-		<script>
-			var session = '<%= session[:site] %>' // 切り替えたサイトを、railsのメソッドで取得しておく
-		</script>
+		<!-- 切り替えたサイトを、railsのメソッドで取得しておく -->
+		<script> var session='<%= session[:site] %>' </script>
 
-		<!-- jQuery -->
+		<!-- jQueryを読み込む -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		
 		<!-- storage.jsを読み込む -->
-		<%= javascript_include_tag 'storage', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'storage' %>
 		
 	<% end %>
-
-
 
   </tbody>
 </table>
 
 
-
-
+<!-- top.jsを読み込む -->
+<%= javascript_include_tag 'top.js' %>

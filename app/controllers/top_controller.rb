@@ -109,8 +109,9 @@ class TopController < ApplicationController
   #### リンク先サイトを変える
   def change_site
   	session[:site] = params[:site] # パラメータをそのままセッションに代入
-  	# render :json => {:session[:site] => @site}
-  	redirect_to('/')
+  	@session = session[:site]
+  	render json: @session
+  	# redirect_to('/')
   end
 
 end
