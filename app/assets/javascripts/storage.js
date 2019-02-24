@@ -66,14 +66,41 @@ var viewStorage = function(){
 
 
 // 新しいワード追加ボタンを押されたとき
-$('#get_word').one('click', function getWord() { // oneだから1回だけ有効
-  // ストレージに保存する値をセット
-  uuid = getUniqueStr(); // ユニークなIDを取得　
-  var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
-  var _name = word; // topのviewでセットしたワード
-  var _star = 0; // 始めはスターなし
-  var _visit = 0; // 始めは訪れてない
-  saveStorage(Key,_name,_star,_visit); 
+$('#get_word').on('click', function getWord() { // oneだから1回だけ有効
+
+  // リクエストを送信
+  $.ajax({
+      url : "/add", // ランダムワード生成してrenderしてくれるcontrollerを叩く
+      type : "GET",
+      dataType:"html", 
+      // data : {}, // 今回は、受け取るだけでこちらからは何も送らない
+
+      error : function(XMLHttpRequest, textStatus, errorThrown) { // エラーの場合
+        console.log("ajax通信に失敗しました");
+        // console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        // console.log("textStatus     : " + textStatus);
+        // console.log("errorThrown    : " + errorThrown.message);          
+      },
+      success : function(response) { // 成功の場合
+        console.log("ajax通信に成功しました");
+        console.log(response);
+
+        // ストレージに保存する値をセット
+        uuid = getUniqueStr(); // ユニークなIDを取得　
+        var Key = 'randomMemo_'+uuid; // このサイト特有の文字列を組み合わせる
+        var _name = response; // topのviewでセットしたワード
+        var _star = 0; // 始めはスターなし
+        var _visit = 0; // 始めは訪れてない
+        saveStorage(Key, _name, _star, _visit); 
+
+      }//あと、通信中はボタンを無効にしたい
+
+  // }).done(function(data) {
+    // その後の処理
+  });
+
+
+
 });
 
 

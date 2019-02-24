@@ -18,7 +18,7 @@ jQuery(function($){
 		        url : "/move_data",
 		        type : "GET",
 		        dataType:"html",
-		        async: false,
+		        async: false, // 同期通信
 		        data : {name: obj.name, star: obj.star, visit: obj.visit},
 		        error : function(XMLHttpRequest, textStatus, errorThrown) {
 							console.log("ajax通信に失敗しました");
