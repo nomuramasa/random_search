@@ -45,13 +45,10 @@
  				<% for site in @sites %>
 					<!-- パラメータにはサイト名を指定（Google/change_site）。選択されてない場合はミュート -->
 					<a 
+						id='request_ajax'
 						href='<%= site[0][:name] %>/change_site'
-						class='
-							btn btn-<%= site[0][:color] %> btn-sm
-							<% if session[:site] != "#{site[0][:name]}" %>
-								mute
-							<% end %>
-						'
+						class='btn btn-<%= site[0][:color] %> btn-sm <% if session[:site] != "#{site[0][:name]}" %>mute<% end %>' 
+						data-remote='true'
 					>
 						<%= site[0][:name] %>  <!-- Google・Youtube・Twitterのどれか -->
 						<% if session[:site] == "#{site[0][:name]}" %> <!-- 選択中のサイトには「で検索」を付ける -->
@@ -59,7 +56,9 @@
 						<% end %>
 					</a>	
 				<% end %>
-
+	
+	    <!-- <div id="updated_by_ajax" >DEFAULT</div>  ここに結果 --> 
+	
 			</th>
 			<th class='col-1 col-lg-1'><span class='d-none d-md-block'>目印</span></th>
 			<th class='col-1 col-lg-1'><span class='d-none d-md-block'>削除</span></th>
@@ -130,7 +129,7 @@
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		
-		<!-- storage.jsを読み込む（/app/assets/javascript/application.js） -->
+		<!-- storage.jsを読み込む -->
 		<%= javascript_include_tag 'storage', 'data-turbolinks-track': 'reload' %>
 		
 	<% end %>
