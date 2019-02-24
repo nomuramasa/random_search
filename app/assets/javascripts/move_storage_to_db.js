@@ -15,19 +15,19 @@ jQuery(function($){
 
 
 		    $.ajax({
-		        url : "/move_data",
-		        type : "GET",
-		        dataType:"html",
+		        url : '/move_data',
+		        type : 'GET',
+		        dataType:'html',
 		        async: false, // 同期通信
 		        data : {name: obj.name, star: obj.star, visit: obj.visit},
 		        error : function(XMLHttpRequest, textStatus, errorThrown) {
-							console.log("ajax通信に失敗しました");
-							// console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-							// console.log("textStatus     : " + textStatus);
-							// console.log("errorThrown    : " + errorThrown.message);	        
+							console.log('ajax通信に失敗しました');
+							// console.log('XMLHttpRequest : ' + XMLHttpRequest.status);
+							// console.log('textStatus     : ' + textStatus);
+							// console.log('errorThrown    : ' + errorThrown.message);	        
 						},
 		        success : function(response) {
-	            console.log("ajax通信に成功しました");
+	            console.log('ajax通信に成功しました');
 	            // console.log(response)
 		        },
 		        complete: function(){}

@@ -66,27 +66,28 @@ var viewStorage = function(){
 
 
 // 新しいワード追加ボタンを押されたとき
-$('#get_word').on('click', function getWord() { // oneだから1回だけ有効
+// $('#get_word').on('click', function getWord() { // oneだから1回だけ有効
+var makeWord = function(){
 
   // リクエストを送信
   $.ajax({
-      url : "/add", // ランダムワード生成してrenderしてくれるcontrollerを叩く
-      type : "GET",
-      dataType:"html", 
+      url : '/add', // ランダムワード生成してrenderしてくれるcontrollerを叩く
+      type : 'GET',
+      dataType:'html', 
       // data : {}, // 今回は、受け取るだけでこちらからは何も送らない
 
       beforeSend: function(){ // 通信中
-        document.getElementById('get_word').innerHTML = '<i class="fa fa-spinner fa-spin"></i>　ワード 生成中　<i class="fa fa-spinner fa-spin"></i>' // loadingマーク
+        document.getElementById('make_word').innerHTML = '<i class="fa fa-spinner fa-spin"></i>　ワード 生成中　<i class="fa fa-spinner fa-spin"></i>' // loadingマーク
       },
 
       error : function(XMLHttpRequest, textStatus, errorThrown) { // エラーの場合
-        console.log("ajax通信に失敗しました");
-        // console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-        // console.log("textStatus     : " + textStatus);
-        // console.log("errorThrown    : " + errorThrown.message);          
+        console.log('ajax通信に失敗しました');
+        // console.log('XMLHttpRequest : ' + XMLHttpRequest.status);
+        // console.log('textStatus     : ' + textStatus);
+        // console.log('errorThrown    : ' + errorThrown.message);          
       },
       success : function(response) { // 成功の場合
-        console.log("ajax通信に成功しました");
+        console.log('ajax通信に成功しました');
         console.log(response);
 
         // ストレージに保存する値をセット
@@ -100,12 +101,12 @@ $('#get_word').on('click', function getWord() { // oneだから1回だけ有効
       }
 
   }).done(function(data) { // その後の処理
-    document.getElementById('get_word').innerHTML = 'ランダムワード生成 ＋' // ボタンの文字を元に戻しておく
+    document.getElementById('make_word').innerHTML = 'ランダムワード生成 ＋' // ボタンの文字を元に戻しておく
   });
 
 
-
-});
+}
+// });
 
 
 // ストレージに追加
