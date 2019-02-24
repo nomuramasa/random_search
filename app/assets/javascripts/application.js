@@ -1,3 +1,5 @@
+//= require rails-ujs
+
 document.addEventListener('DOMContentLoaded', function(event) { 
     if (sessionStorage.getItem('visited') == null) { // sessionにvisitedがまだ無いとき（つまりこのタブで最初のアクセスのとき）
         document.getElementById('only_once').classList.add('d-block'); // 表示クラスを付ける
@@ -5,3 +7,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
         sessionStorage.setItem('visited', 1) // フラグを立てる
     }
 });
+
+//= require rails-ujs
+//= require activestorage
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require_tree .

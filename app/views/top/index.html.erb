@@ -1,5 +1,5 @@
 <!-- ボタンのリンク先 rubyとjsで分ける -->
-<% if @current_user then attribute='href=/add data-remote=true' else attribute='onclick=makeWord()' end %>
+<% if @current_user then attribute='href=/add' else attribute='onclick=makeWord()' end %>
 
 <!-- 最初の説明文 -->
 <div id='only_once' class='d-none text-sm-center my-4 balloon rounded rounded-lg p-3 mx-auto col-lg-7'>
@@ -48,7 +48,6 @@
 						id='request_ajax'
 						href='<%= site[0][:name] %>/change_site'
 						class='btn btn-<%= site[0][:color] %> btn-sm <% if session[:site] != "#{site[0][:name]}" %>mute<% end %>' 
-						data-remote='true'
 					>
 						<%= site[0][:name] %>  <!-- Google・Youtube・Twitterのどれか -->
 						<% if session[:site] == "#{site[0][:name]}" %> <!-- 選択中のサイトには「で検索」を付ける -->
@@ -110,7 +109,7 @@
 
 			  <!-- ごみ箱 -->  
 				<td class='col-1_half col-sm-1'>
-          <a href='<%= "/#{word.id}/delete" %>'><i class='material-icons trash'>delete</i></a>
+          <a href='<%= "/#{word.id}/delete" %>' class='delete' data-remote='true' data-method='post'><i class='material-icons trash'>delete</i></a>
 				</td>
 
 			</tr>

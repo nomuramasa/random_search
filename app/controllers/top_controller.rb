@@ -102,7 +102,8 @@ class TopController < ApplicationController
   def delete
     @word = Word.find_by(id:params[:id])
     @word.destroy
-	  redirect_to('/') # トップページへ
+    head :no_content
+	  # redirect_to('/') # トップページへ
   end
 
 
